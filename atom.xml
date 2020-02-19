@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kaijie.tech/"/>
-  <updated>2020-02-19T03:51:58.365Z</updated>
+  <updated>2020-02-19T05:58:46.470Z</updated>
   <id>http://kaijie.tech/</id>
   
   <author>
@@ -17,17 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexo搭建个人博客之next主题优化</title>
+    <link href="http://kaijie.tech/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/"/>
+    <id>http://kaijie.tech/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</id>
+    <published>2020-02-19T05:33:53.000Z</published>
+    <updated>2020-02-19T05:58:46.470Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="如何写博客"><a href="#如何写博客" class="headerlink" title="如何写博客"></a>如何写博客</h2><h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"XXX"</span></span><br></pre></td></tr></table></figure><p>它其实默认使用的是post这个布局，也就是在source文件夹下的_post里面。</p><p>Hexo有三种默认布局：post、page和draft(<code>默认为post</code>)，它们分别对应不同的路径，而您自定义的其他布局和post相同，都将储存到source/_posts文件夹。</p><p>而new这个命令其实是：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure><p>draft是草稿的意思，也就是你如果想写文章，又不希望被看到，那么可以</p><p>hexo new draft newdraft<br>Bash<br>这样会在source/_draft中新建一个newdraft.md文件，如果你的草稿文件写的过程中，想要预览一下，那么可以使用</p><p>hexo server –draft<br>Bash<br>在本地端口中开启服务预览。</p><p>如果你的草稿文件写完了，想要发表到post中，</p><p>hexo publish draft newdraft<br>Bash<br>就会自动把newdraft.md发送到post中。</p><h3 id="添加新的page"><a href="#添加新的page" class="headerlink" title="添加新的page"></a>添加新的page</h3><p>如果你想另起一页，那么可以使用</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page newpage</span><br></pre></td></tr></table></figure><p>例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page <span class="string">"about"</span></span><br></pre></td></tr></table></figure><p>系统会自动给你在source文件夹下创建一个newpage文件夹，以及newpage文件夹中的index.md，这样你访问的newpage对应的链接就是<a href="http://xxx.xxx/newpage" target="_blank" rel="noopener">http://xxx.xxx/newpage</a></p><h3 id="新建博客模板修改"><a href="#新建博客模板修改" class="headerlink" title="新建博客模板修改"></a>新建博客模板修改</h3><p>首先为了新建文章方便，我们可以修改一下文章模板，建议将/scaffolds/post.md修改为如下代码：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">author: Kaijie</span><br><span class="line">excerpt:</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure><h3 id="添加主题分类"><a href="#添加主题分类" class="headerlink" title="添加主题分类"></a>添加主题分类</h3><p><a href="https://www.jianshu.com/p/4e094e41c1ab" target="_blank" rel="noopener">hexo之next主题添加分类</a></p><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://sunhwee.com/posts/6e8839eb.html#toc-heading-22" target="_blank" rel="noopener">Hexo+Github博客搭建完全教程</a></p>]]></content>
+    
+    <summary type="html">
+    
+      如何写一篇博客
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://kaijie.tech/categories/hexo/"/>
+    
+    
+      <category term="个人博客" scheme="http://kaijie.tech/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="优化" scheme="http://kaijie.tech/tags/%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>测试</title>
     <link href="http://kaijie.tech/2020/02/19/%E6%B5%8B%E8%AF%95/"/>
     <id>http://kaijie.tech/2020/02/19/%E6%B5%8B%E8%AF%95/</id>
     <published>2020-02-19T02:51:59.000Z</published>
-    <updated>2020-02-19T03:51:58.365Z</updated>
+    <updated>2020-02-19T05:15:11.733Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="我的第一篇博客"><a href="#我的第一篇博客" class="headerlink" title="我的第一篇博客"></a>我的第一篇博客</h2><p>如果你问的问题我不知道答案，我会直接告诉你“我不知道”。但我向你保证，我知道如何寻找答案，而且我一定会找出答案的。——幸福来敲门</p><p>把人生中遇到的所有挫折，都当做是一种磨练。把人生中遇到的所有不幸，都当做是一种考验。把人生中遇到的所有的痛苦，都当做是黎明前的黑暗。</p><p>懒惰即是魔鬼，它只会消极你的人生，阻止你前进的道路。<br>记得，在没有成功之前，不要停下你的脚步，因为一旦停下了，你可能需要十倍百倍的时间前去弥补。一鼓作气，再而衰，三而竭。牢记，坚持就是胜利。找的自己想要的，制定一份长期可行的计划，立马去做，不要找任何的借口。在你达到你的最终目标之前，你没有休息日，你没有节假日，因为当你停下脚步的时候，比你优秀的人还在努力前进。当你发呆的时候，当你玩游戏的时候，当你抱怨的时候，当你躺在床上睡觉的时候，当你做一些对你目标没有任何意义的时候，当你在犹豫不决不敢迈开第一步的时候，当你想要获得成功但是又不做任何实际行动的时候，当你刷着朋友圈看着你向往的生活的时候。别看了，别想了，你没有这么多时间，你唯一能做的就是做当下的工作，努力朝着你的目标狂奔。如果有人说你不行，你只需要记得，那是他不行，并不代表你也不行，如果你有梦想，那就保护好它。加油，你一定可以的！！！</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="春"><a href="#春" class="headerlink" title="春"></a>春</h2><h3 id="作者：朱自清"><a href="#作者：朱自清" class="headerlink" title="作者：朱自清"></a>作者：朱自清</h3><p>盼望着，盼望着，东风来了，春天的脚步近了。<br>一切都像刚睡醒的样子，欣欣然张开了眼。山朗润起来了，水涨起来了，太阳的脸红起来了。<br>小草偷偷地从土里钻出来，嫩嫩的，绿绿的。园子里，田野里，瞧去，一大片一大片满是的。坐着，躺着，打两个滚，踢几脚球，赛几趟跑，捉几回迷藏。风轻悄悄的，草软绵绵的。<br>桃树、杏树、梨树，你不让我，我不让你，都开满了花赶趟儿。红的像火，粉的像霞，白的像雪。花里带着甜味儿；闭了眼，树上仿佛已经满是桃儿、杏儿、梨儿。花下成千成百的蜜蜂嗡嗡地闹着，大小的蝴蝶飞来飞去。野花遍地是：杂样儿，有名字的，没名字的，散在草丛里，像眼睛，像星星，还眨呀眨的。<br>“吹面不寒杨柳风”，不错的，像母亲的手抚摸着你。风里带来些新翻的泥土的气息，混着青草味儿，还有各种花的香，都在微微润湿的空气里酝酿。鸟儿将窠巢安在繁花嫩叶当中，高兴起来了，呼朋引伴地卖弄清脆的喉咙，唱出宛转的曲子，与轻风流水应和着。牛背上牧童的短笛，这时候也成天嘹亮地响着。<br>雨是最寻常的，一下就是三两天。可别恼。看，像牛毛，像花针，像细丝，密密地斜织着，人家屋顶上全笼着一层薄烟。树叶儿却绿得发亮，小草儿也青得逼你的眼。傍晚时候，上灯了，一点点黄晕的光，烘托出一片安静而和平的夜。在乡下，小路上，石桥边，有撑起伞慢慢走着的人，地里还有工作的农民，披着蓑戴着笠。他们的房屋，稀稀疏疏的在雨里静默着。<br>天上风筝渐渐多了，地上孩子也多了。城里乡下，家家户户，老老小小，也赶趟儿似的，一个个都出来了。舒活舒活筋骨，抖擞抖擞精神，各做各的一份事去。“一年之计在于春”，刚起头儿，有的是工夫，有的是希望。<br>春天像刚落地的娃娃，从头到脚都是新的，它生长着。<br>春天像小姑娘，花枝招展的，笑着，走着。<br>春天像健壮的青年，有铁一般的胳膊和腰脚，领着我们上前去。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      如果你问的问题我不知道答案，我会直接告诉你“我不知道”。但我向你保证，我知道如何寻找答案，而且我一定会找出答案的。——幸福来敲门。把人生中遇到的所有挫折，都当做是一种磨练。把人生中遇到的所有不幸，都当做是一种考验。把人生中遇到的所有的痛苦，都当做是黎明前的黑暗。
+      盼望着，盼望着，东风来了，春天的脚步近了。
     
     </summary>
     
