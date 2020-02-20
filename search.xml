@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>解决国内github无法访问或速度慢问题</title>
+    <url>/2020/02/19/%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E6%88%96%E9%80%9F%E5%BA%A6%E6%85%A2%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>由于国内访问github速度较慢，尤其是在克隆仓库时候。本文将介绍如何在不科学上网的情况下，加速访问。本文通过修改系统hosts文件的办法，绕过国内dns解析，直接访问GitHub的CDN节点，从而达到加速的目的。</p>
+<h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><h3 id="访问-https-www-ipaddress-com-ip-lookup"><a href="#访问-https-www-ipaddress-com-ip-lookup" class="headerlink" title="访问 https://www.ipaddress.com/ip-lookup"></a>访问 <a href="">https://www.ipaddress.com/ip-lookup</a></h3><p>查询下面3个网址对应的IP地址:</p>
+<ul>
+<li>github.com</li>
+<li>github.global.ssl.fastly.net</li>
+<li>assets-cdn.github.com</li>
+</ul>
+<h3 id="修改本地电脑系统hosts文件"><a href="#修改本地电脑系统hosts文件" class="headerlink" title="修改本地电脑系统hosts文件"></a>修改本地电脑系统hosts文件</h3><p>查找hosts文件</p>
+<ul>
+<li>windows系统的hosts文件的位置如下：C:\Windows\System32\drivers\etc\hosts</li>
+<li>mac/linux系统的hosts文件的位置如下：/etc/hosts</li>
+</ul>
+<p>修改hosts文件，在末尾添加第一步中查出的ip地址：<code>注：ip与网址中间需要加一个空格</code></p>
+<p><strong>例如添加：如下代码</strong></p>
+<p><img src="/images/github.png" alt=""></p>
+<h2 id="清空dns缓存"><a href="#清空dns缓存" class="headerlink" title="清空dns缓存"></a>清空dns缓存</h2><p>windows用户：使用win+R输入cmd，在命令台运行以下代码刷新DNS：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
+
+<p>成功~~</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://blog.csdn.net/cxrsdn/article/details/102702936" target="_blank" rel="noopener">GitHub中国加速访问，github加速</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/100417347" target="_blank" rel="noopener">Github下载提速</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github访问</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo搭建个人博客之next主题优化</title>
+    <url>/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h2 id="如何写博客"><a href="#如何写博客" class="headerlink" title="如何写博客"></a>如何写博客</h2><h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">"XXX"</span></span><br></pre></td></tr></table></figure>
+
+<p>它其实默认使用的是post这个布局，也就是在source文件夹下的_post里面。</p>
+<p>Hexo有三种默认布局：post、page和draft(<code>默认为post</code>)，它们分别对应不同的路径，而您自定义的其他布局和post相同，都将储存到source/_posts文件夹。</p>
+<p>而new这个命令其实是：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>draft是草稿的意思，也就是你如果想写文章，又不希望被看到，那么可以</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft newdraft</span><br></pre></td></tr></table></figure>
+
+<p>这样会在source/_draft中新建一个newdraft.md文件，如果你的草稿文件写的过程中，想要预览一下，那么可以使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
+
+<p>在本地端口中开启服务预览。</p>
+<p>如果你的草稿文件写完了，想要发表到post中，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish draft newdraft</span><br></pre></td></tr></table></figure>
+
+<p>就会自动把newdraft.md发送到post中。</p>
+<h3 id="添加新的page"><a href="#添加新的page" class="headerlink" title="添加新的page"></a>添加新的page</h3><p>如果你想另起一页，那么可以使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page newpage</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">"about"</span></span><br></pre></td></tr></table></figure>
+
+<p>系统会自动给你在source文件夹下创建一个newpage文件夹，以及newpage文件夹中的index.md，这样你访问的newpage对应的链接就是<a href="http://xxx.xxx/newpage" target="_blank" rel="noopener">http://xxx.xxx/newpage</a></p>
+<h3 id="新建博客模板修改"><a href="#新建博客模板修改" class="headerlink" title="新建博客模板修改"></a>新建博客模板修改</h3><p>首先为了新建文章方便，我们可以修改一下文章模板，建议将/scaffolds/post.md修改为如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">excerpt: </span><br><span class="line">tags: </span><br><span class="line">categories: </span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://sunhwee.com/posts/6e8839eb.html#toc-heading-22" target="_blank" rel="noopener">Hexo+Github博客搭建完全教程</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>个人博客</tag>
+        <tag>优化</tag>
+      </tags>
+  </entry>
+</search>
