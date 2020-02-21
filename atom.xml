@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kaijie.tech/"/>
-  <updated>2020-02-19T09:41:47.628Z</updated>
+  <updated>2020-02-21T02:40:30.478Z</updated>
   <id>http://kaijie.tech/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://kaijie.tech/2020/02/19/%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E6%88%96%E9%80%9F%E5%BA%A6%E6%85%A2%E9%97%AE%E9%A2%98/"/>
     <id>http://kaijie.tech/2020/02/19/%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E6%88%96%E9%80%9F%E5%BA%A6%E6%85%A2%E9%97%AE%E9%A2%98/</id>
     <published>2020-02-19T09:20:37.000Z</published>
-    <updated>2020-02-19T09:41:47.628Z</updated>
+    <updated>2020-02-21T02:40:30.478Z</updated>
     
     <content type="html"><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>由于国内访问github速度较慢，尤其是在克隆仓库时候。本文将介绍如何在不科学上网的情况下，加速访问。本文通过修改系统hosts文件的办法，绕过国内dns解析，直接访问GitHub的CDN节点，从而达到加速的目的。</p><h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><h3 id="访问-https-www-ipaddress-com-ip-lookup"><a href="#访问-https-www-ipaddress-com-ip-lookup" class="headerlink" title="访问 https://www.ipaddress.com/ip-lookup"></a>访问 <a href="">https://www.ipaddress.com/ip-lookup</a></h3><p>查询下面3个网址对应的IP地址:</p><ul><li>github.com</li><li>github.global.ssl.fastly.net</li><li>assets-cdn.github.com</li></ul><h3 id="修改本地电脑系统hosts文件"><a href="#修改本地电脑系统hosts文件" class="headerlink" title="修改本地电脑系统hosts文件"></a>修改本地电脑系统hosts文件</h3><p>查找hosts文件</p><ul><li>windows系统的hosts文件的位置如下：C:\Windows\System32\drivers\etc\hosts</li><li>mac/linux系统的hosts文件的位置如下：/etc/hosts</li></ul><p>修改hosts文件，在末尾添加第一步中查出的ip地址：<code>注：ip与网址中间需要加一个空格</code></p><p><strong>例如添加：如下代码</strong></p><p><img src="/images/github.png" alt=""></p><h2 id="清空dns缓存"><a href="#清空dns缓存" class="headerlink" title="清空dns缓存"></a>清空dns缓存</h2><p>windows用户：使用win+R输入cmd，在命令台运行以下代码刷新DNS：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure><p>成功~~</p><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul><li><a href="https://blog.csdn.net/cxrsdn/article/details/102702936" target="_blank" rel="noopener">GitHub中国加速访问，github加速</a></li><li><a href="https://zhuanlan.zhihu.com/p/100417347" target="_blank" rel="noopener">Github下载提速</a></li></ul>]]></content>
     
