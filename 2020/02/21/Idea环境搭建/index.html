@@ -22,21 +22,35 @@
     var CONFIG = {"hostname":"kaijie.tech","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":"ture","show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本文记述了关于使用hexo+next主题时的一些坑。">
+  <meta name="description" content="无">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo搭建个人博客之next主题优化">
-<meta property="og:url" content="http://kaijie.tech/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="Idea环境搭建">
+<meta property="og:url" content="http://kaijie.tech/2020/02/21/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="Kaijie&#39;s Blog">
-<meta property="og:description" content="本文记述了关于使用hexo+next主题时的一些坑。">
+<meta property="og:description" content="无">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-19T05:33:53.000Z">
-<meta property="article:modified_time" content="2020-02-21T12:54:09.373Z">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5Cjava.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5Cjavac.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221213403.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221215115.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221215745.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221153.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221332.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221531.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221705.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221921.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221222123.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221222334.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221222752.png">
+<meta property="og:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221223515.png">
+<meta property="article:published_time" content="2020-02-21T12:53:47.000Z">
+<meta property="article:modified_time" content="2020-02-21T14:43:47.341Z">
 <meta property="article:author" content="Kaijie">
-<meta property="article:tag" content="个人博客">
-<meta property="article:tag" content="优化">
+<meta property="article:tag" content="无">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="e:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5Cjava.png">
 
-<link rel="canonical" href="http://kaijie.tech/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/">
+<link rel="canonical" href="http://kaijie.tech/2020/02/21/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
 
 <script id="page-configurations">
@@ -48,7 +62,7 @@
   };
 </script>
 
-  <title>hexo搭建个人博客之next主题优化 | Kaijie's Blog</title>
+  <title>Idea环境搭建 | Kaijie's Blog</title>
   
 
 
@@ -195,7 +209,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kaijie.tech/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="http://kaijie.tech/2020/02/21/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -208,7 +222,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo搭建个人博客之next主题优化
+          Idea环境搭建
         </h1>
 
         <div class="post-meta">
@@ -217,30 +231,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-02-19 13:33:53" itemprop="dateCreated datePublished" datetime="2020-02-19T13:33:53+08:00">2020-02-19</time>
+              <time title="创建时间：2020-02-21 20:53:47 / 修改时间：22:43:47" itemprop="dateCreated datePublished" datetime="2020-02-21T20:53:47+08:00">2020-02-21</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-21 20:54:09" itemprop="dateModified" datetime="2020-02-21T20:54:09+08:00">2020-02-21</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/%E6%97%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">无</span>
                   </a>
                 </span>
             </span>
 
           
-            <span id="/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" class="post-meta-item leancloud_visitors" data-flag-title="hexo搭建个人博客之next主题优化" title="阅读次数">
+            <span id="/2020/02/21/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="post-meta-item leancloud_visitors" data-flag-title="Idea环境搭建" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -255,8 +263,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/02/21/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/21/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -266,7 +274,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>767</span>
+              <span>1.8k</span>
             </span>
 
         </div>
@@ -278,36 +286,80 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="如何写博客"><a href="#如何写博客" class="headerlink" title="如何写博客"></a>如何写博客</h2><h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"XXX"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="安装jdk1-8"><a href="#安装jdk1-8" class="headerlink" title="安装jdk1.8"></a>安装jdk1.8</h2><p><strong>本文推荐</strong>使用压缩版jdk并解压使用，原因是比起exe安装，这样我们<code>可以支持在一台电脑上配置多个版本jdk</code>。</p>
+<p>链接：<a href="https://pan.baidu.com/s/1hXAk3m6lDedbMS9Ro0QX7A" target="_blank" rel="noopener">https://pan.baidu.com/s/1hXAk3m6lDedbMS9Ro0QX7A</a><br>提取码：bs3n </p>
+<h3 id="配置jdk1-8"><a href="#配置jdk1-8" class="headerlink" title="配置jdk1.8"></a>配置jdk1.8</h3><ul>
+<li>配置JAVA_HOME：解压jdk的目录</li>
+<li>配置CLASSPATH：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</span><br></pre></td></tr></table></figure>
 
-<p>它其实默认使用的是post这个布局，也就是在source文件夹下的_post里面。</p>
-<p>Hexo有三种默认布局：post、page和draft(<code>默认为post</code>)，它们分别对应不同的路径，而您自定义的其他布局和post相同，都将储存到source/_posts文件夹。</p>
-<p>而new这个命令其实是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在path中加入两个新的配置:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br><span class="line">%JAVA_HOME%\jre\bin</span><br></pre></td></tr></table></figure>
 
-<p>draft是草稿的意思，也就是你如果想写文章，又不希望被看到，那么可以</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft newdraft</span><br></pre></td></tr></table></figure>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>用ctrl+r输入cmd，分别输入java和javac。如出现类似下图代码则安装成功：</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5Cjava.png" alt=""></p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5Cjavac.png" alt=""></p>
+<h3 id="更换jdk"><a href="#更换jdk" class="headerlink" title="更换jdk"></a>更换jdk</h3><p><strong>如果我们需要更换jdk，只需要重新配置JAVA_HOME的内容即可</strong>。</p>
+<h2 id="安装idea"><a href="#安装idea" class="headerlink" title="安装idea"></a>安装idea</h2><p>我的环境：</p>
+<ul>
+<li>Win10</li>
+<li>Idea版本：2019.3.1</li>
+<li>Maven：3.6.3</li>
+</ul>
+<p>idea（2019.3.1）软件、破解包及破解码：</p>
+<p>链接: <a href="https://pan.baidu.com/s/1AWVfw6WqzqpXwsJF3gXsSw" target="_blank" rel="noopener">https://pan.baidu.com/s/1AWVfw6WqzqpXwsJF3gXsSw</a></p>
+<p>提取码：nkho</p>
+<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h3><p>下载网盘里的所有东西后：</p>
+<ul>
+<li><p>安装exe文件，一路next就好</p>
+</li>
+<li><p>将jetbrains-agent.jar放入自定义文件夹，例如：E:\Java\ideaIU\IntelliJ IDEA 2019.3.1\bin</p>
+</li>
+<li><p>启动IDEA，先选择Evaluate for free试用，点击Evaluate for free和Evaluate，进入idea，点击“Configure”-&gt;“Edit Custom VM Options”</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221213403.png" alt=""></p>
+</li>
+<li><p>在该文件的最后一步加上：<code>-javaagent:自己idea的安装目录\jetbrains-agent.jar</code>，例如我添加的是: <code>-javaagent:E:\Java\ideaIU\IntelliJ IDEA 2019.3.1\bin\jetbrains-agent.jar</code></p>
+</li>
+<li><p>重启idea（必须），然后点击Help-&gt;Register，输入<code>http://jetbrains-license-server</code>，并点击Discover Server-&gt;activate-&gt;成功！</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221215115.png" alt=""></p>
+</li>
+<li><p>如未成功，点击Activation code，输入刚下载的任意一个破解码并点击Activate-&gt;成功</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221215745.png" alt=""></p>
+</li>
+</ul>
+<h2 id="安装Maven"><a href="#安装Maven" class="headerlink" title="安装Maven"></a>安装Maven</h2><h3 id="下载并解压"><a href="#下载并解压" class="headerlink" title="下载并解压"></a>下载并解压</h3><p>官方下载地址：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221153.png" alt=""></p>
+<p>解压并新建一个本地仓库文件夹(LocalWarehouse)：</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221332.png" alt=""></p>
+<p>配置本地仓库路径:</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221531.png" alt=""></p>
+<p>将此处改为你刚才新建的本地仓库文件夹地址：</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221705.png" alt=""></p>
+<p>新建Maven_HOME环境变量，变量值为Maven的解压目录：</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221221921.png" alt=""></p>
+<p>配置Path变量，变量值为<code>%MAVEN_HOME%\bin</code>：</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221222123.png" alt=""></p>
+<p>验证：使用win+R输入cmd-&gt;输入mvn -v。如未成功，尝试重启电脑。</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221222334.png" alt=""></p>
+<h3 id="在idea中配置Maven"><a href="#在idea中配置Maven" class="headerlink" title="在idea中配置Maven"></a>在idea中配置Maven</h3><p>选择File-&gt;Setting-&gt;搜索maven：修改如下内容并点击Apply</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221222752.png" alt=""></p>
+<h2 id="安装一些有用的插件"><a href="#安装一些有用的插件" class="headerlink" title="安装一些有用的插件"></a>安装一些有用的插件</h2><h3 id="lombok插件"><a href="#lombok插件" class="headerlink" title="lombok插件"></a>lombok插件</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>我们在java开发过程中，经常会有一些常规性的，重复性的工作。比如：</p>
+<ul>
+<li>根据成员变量生成get和set方法</li>
+<li>根据成员变量生成类的构造函数</li>
+<li>重写toString()和hashCode方法</li>
+<li>引入日志框架logFactory，用来打印日志</li>
+</ul>
+<p>以上都是一些重复动作，模板代码。每次都手动生成既浪费时间，又增加了大量的冗余代码。我们可以使用lombok插件来解决这个问题。使我们的编码效率得到大幅度的提高！</p>
+<h4 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h4><p>以InelliJ IDEA为例，安装lombok插件。打开 IDEA 的 File-&gt;Settings 面板，并选择 Plugins 选项，点击Marketplace，在搜索框输入”lombok”，结果中找到lombok点击install，然后重启 IDEA。</p>
+<p><img src="E:%5CMyBlog%5Csource%5Cimages%5CIdea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5CTIM%E6%88%AA%E5%9B%BE20200221223515.png" alt=""></p>
+<p>在使用spring boot项目时，我们还要在pom.xml里面加上如下依赖，插件生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">            &lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<p>这样会在source/_draft中新建一个newdraft.md文件，如果你的草稿文件写的过程中，想要预览一下，那么可以使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
-
-<p>在本地端口中开启服务预览。</p>
-<p>如果你的草稿文件写完了，想要发表到post中，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish draft newdraft</span><br></pre></td></tr></table></figure>
-
-<p>就会自动把newdraft.md发送到post中。</p>
-<h3 id="添加新的page"><a href="#添加新的page" class="headerlink" title="添加新的page"></a>添加新的page</h3><p>如果你想另起一页，那么可以使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page newpage</span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page <span class="string">"about"</span></span><br></pre></td></tr></table></figure>
-
-<p>系统会自动给你在source文件夹下创建一个newpage文件夹，以及newpage文件夹中的index.md，这样你访问的newpage对应的链接就是<a href="http://xxx.xxx/newpage" target="_blank" rel="noopener">http://xxx.xxx/newpage</a></p>
-<h3 id="新建博客模板修改"><a href="#新建博客模板修改" class="headerlink" title="新建博客模板修改"></a>新建博客模板修改</h3><p>首先为了新建文章方便，我们可以修改一下文章模板，建议将/scaffolds/post.md修改为如下代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">excerpt: </span><br><span class="line">tags: </span><br><span class="line">categories: </span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://sunhwee.com/posts/6e8839eb.html#toc-heading-22" target="_blank" rel="noopener">Hexo+Github博客搭建完全教程</a></p>
-
+<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><h4 id="热加载与热部署"><a href="#热加载与热部署" class="headerlink" title="热加载与热部署"></a>热加载与热部署</h4><h4 id="GsonFormat"><a href="#GsonFormat" class="headerlink" title="GsonFormat"></a>GsonFormat</h4><h4 id="Maven-Helper"><a href="#Maven-Helper" class="headerlink" title="Maven Helper"></a>Maven Helper</h4>
     </div>
 
     
@@ -342,7 +394,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kaijie.tech/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" title="hexo搭建个人博客之next主题优化">http://kaijie.tech/2020/02/19/hexo搭建个人博客之next主题优化/</a>
+    <a href="http://kaijie.tech/2020/02/21/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Idea环境搭建">http://kaijie.tech/2020/02/21/Idea环境搭建/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -364,8 +416,7 @@
       
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="tag"># 个人博客</a>
-              <a href="/tags/%E4%BC%98%E5%8C%96/" rel="tag"># 优化</a>
+              <a href="/tags/%E6%97%A0/" rel="tag"># 无</a>
           </div>
 
         
@@ -373,11 +424,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/02/19/%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E6%88%96%E9%80%9F%E5%BA%A6%E6%85%A2%E9%97%AE%E9%A2%98/" rel="next" title="解决国内github无法访问或速度慢问题">
-      解决国内github无法访问或速度慢问题 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/02/19/%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85github%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E6%88%96%E9%80%9F%E5%BA%A6%E6%85%A2%E9%97%AE%E9%A2%98/" rel="prev" title="解决国内github无法访问或速度慢问题">
+      <i class="fa fa-chevron-left"></i> 解决国内github无法访问或速度慢问题
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -438,7 +489,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何写博客"><span class="nav-number">1.</span> <span class="nav-text">如何写博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建博客"><span class="nav-number">1.1.</span> <span class="nav-text">创建博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加新的page"><span class="nav-number">1.2.</span> <span class="nav-text">添加新的page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建博客模板修改"><span class="nav-number">1.3.</span> <span class="nav-text">新建博客模板修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">2.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装jdk1-8"><span class="nav-number">1.</span> <span class="nav-text">安装jdk1.8</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置jdk1-8"><span class="nav-number">1.1.</span> <span class="nav-text">配置jdk1.8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证"><span class="nav-number">1.2.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更换jdk"><span class="nav-number">1.3.</span> <span class="nav-text">更换jdk</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装idea"><span class="nav-number">2.</span> <span class="nav-text">安装idea</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#具体步骤"><span class="nav-number">2.1.</span> <span class="nav-text">具体步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Maven"><span class="nav-number">3.</span> <span class="nav-text">安装Maven</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载并解压"><span class="nav-number">3.1.</span> <span class="nav-text">下载并解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在idea中配置Maven"><span class="nav-number">3.2.</span> <span class="nav-text">在idea中配置Maven</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装一些有用的插件"><span class="nav-number">4.</span> <span class="nav-text">安装一些有用的插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lombok插件"><span class="nav-number">4.1.</span> <span class="nav-text">lombok插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">4.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装方法"><span class="nav-number">4.1.2.</span> <span class="nav-text">安装方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何使用"><span class="nav-number">4.1.3.</span> <span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#热加载与热部署"><span class="nav-number">4.1.4.</span> <span class="nav-text">热加载与热部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GsonFormat"><span class="nav-number">4.1.5.</span> <span class="nav-text">GsonFormat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Maven-Helper"><span class="nav-number">4.1.6.</span> <span class="nav-text">Maven Helper</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -658,7 +709,7 @@ window.addEventListener('pjax:success', () => {
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://kaijie.tech/2020/02/19/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://kaijie.tech/2020/02/21/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/',]
       });
       });
   </script>
