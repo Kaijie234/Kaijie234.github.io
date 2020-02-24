@@ -107,7 +107,7 @@
 </ol>
 <p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-48-55.png" alt=""></p>
 <h2 id="客户端图形化工具：SQLYog"><a href="#客户端图形化工具：SQLYog" class="headerlink" title="客户端图形化工具：SQLYog"></a>客户端图形化工具：SQLYog</h2><p>SQLyog 是业界著名的 Webyog 公司出品的一款简洁高效、功能强大的图形化 MySQL 数据库管理工具。使用<br>SQLyog 可以快速直观地让您从世界的任何角落通过网络来维护远端的 MySQL 数据库。</p>
-<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>傻瓜式安装。安装包和破解码见文末。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>下载地址见本文章开头出。</p>
 <p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-24_19-08-44.png" alt=""></p>
 ]]></content>
       <categories>
@@ -121,7 +121,7 @@
   <entry>
     <title>MySQL学习</title>
     <url>/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>本文所使用的是MySQL5.5.40和可视化工具SQLyog，其安装及卸载教程：[请点击这里]</p>
+    <content><![CDATA[<p>本文所使用的是MySQL5.5.40和可视化工具SQLyog，其安装及卸载教程：<a href="[https://kaijie.tech/2020/02/24/MySQL5-5-40%E5%92%8C%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7SQLyog%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E5%8D%B8%E8%BD%BD/](https://kaijie.tech/2020/02/24/MySQL5-5-40和可视化工具SQLyog的安装及卸载/)">请点击这里</a></p>
 <h2 id="数据库的基本概念"><a href="#数据库的基本概念" class="headerlink" title="数据库的基本概念"></a>数据库的基本概念</h2><ol>
 <li><p>数据库的英文单词： DataBase 简称 ： DB</p>
 </li>
@@ -142,8 +142,8 @@
 </li>
 </ol>
 <h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><ol>
-<li><p>什么是SQL？</p>
-<pre><code>Structured Query Language：**结构化查询语言**。其实就是定义了操作所有**关系型数据库**的规则。每一种数据库操作的方式存在不一样的地方，称为“方言”。</code></pre></li>
+<li><p>什么是SQL？<br>Structured Query Language：<strong>结构化查询语言</strong>。其实就是定义了操作所有<strong>关系型数据库</strong>的规则。每一种数据库操作的方式存在不一样的地方，称为“方言”。</p>
+</li>
 <li><p>SQL通用语法</p>
 <ul>
 <li><p>SQL 语句可以单行或多行书写，以分号结尾。</p>
@@ -293,10 +293,7 @@
 <h4 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h4><p><code>where子句后跟条件</code></p>
 <p>运算符:</p>
 <ul>
-<li><blockquote>
-<p>、&lt; 、&lt;= 、&gt;= 、=(只有一个等号) 、&lt;&gt;(等价于!=)</p>
-</blockquote>
-</li>
+<li>&gt;、&lt; 、&lt;= 、&gt;= 、=(只有一个等号) 、&lt;&gt;(等价于!=)</li>
 <li>BETWEEN…AND  </li>
 <li>IN( 集合) </li>
 <li>LIKE：模糊查询</li>
