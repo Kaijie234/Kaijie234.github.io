@@ -1,8 +1,335 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Idea环境搭建</title>
-    <url>/2020/02/21/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <title>MySQL5.5.40和可视化工具SQLyog的安装及卸载</title>
+    <url>/2020/02/24/MySQL5-5-40%E5%92%8C%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7SQLyog%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E5%8D%B8%E8%BD%BD/</url>
+    <content><![CDATA[<h2 id="MySQL数据库软件"><a href="#MySQL数据库软件" class="headerlink" title="MySQL数据库软件"></a>MySQL数据库软件</h2><p>本文所涉及的所有软件及破解码：</p>
+<p><a href="https://pan.baidu.com/s/1Bd8r4RnqJetJJQUe9v4NyA" target="_blank" rel="noopener">请点击这里</a><br>提取码：mgjl</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<li><p>打开下载的 mysql 安装文件双击解压缩，运行“mysql-5.5.40-win32.msi”。<br>下载地址：</p>
+</li>
+<li><p>一直点击下一步，直到：选择安装类型，有“Typical（默认）”、“Complete（完全）”、“Custom（用户自定义）”三个选项，选择“Custom”，按“next”键继续。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-05-48.png" alt=""></p>
+</li>
+<li><p>点选“Browse”，手动指定安装目录。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-06-38.png" alt=""></p>
+</li>
+<li><p>填上安装目录，我的是“d:\Program Files (x86)\MySQL\MySQL Server 5.0”，按“OK”继续。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-06-52.png" alt=""></p>
+</li>
+<li><p>确认一下先前的设置，如果有误，按“Back”返回重做。按“Install”开始安装</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-07-05.png" alt=""></p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-07-21.png" alt=""></p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-07-29.png" alt=""></p>
+</li>
+</ol>
+<p>​    <img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-07-41.png" alt=""></p>
+<p>​    <img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-07-48.png" alt=""></p>
+<ol start="6">
+<li>正在安装中，请稍候，直到出现下面的界面, 则完成 MYSQL 的安装</li>
+</ol>
+<p>​    <img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-07-55.png" alt=""></p>
+<ol start="7">
+<li>安装完成了，出现如下界面将进入 mysql 配置向导。</li>
+</ol>
+<p>​    <img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-08-01.png" alt=""></p>
+<ol start="8">
+<li><p>选择配置方式，“Detailed Configuration（手动精确配置）”、“Standard Configuration（标准配置）”，我们选择“Detailed Configuration”，方便熟悉配置过程。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-08-10.png" alt=""></p>
+</li>
+<li><p>选择服务器类型，“Developer Machine（开发测试类，mysql 占用很少资源）”、“Server Machine（服务器类型，mysql 占用较多资源）”、“Dedicated MySQL Server Machine（专门的数据库服务器，mysql 占用所有可用资源）”</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-08-19.png" alt=""></p>
+</li>
+<li><p>选择mysql数据库的大致用途，“Multifunctional Database（通用多功能型，好）”、“Transactional Database Only（服务器类型，专注于事务处理，一般）”、“Non-Transactional Database Only（非事务处理型，较简单，主要做一些监控、记数用，对 MyISAM 数据类型的支持仅限于 non-transactional），按“Next”继续。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-08-26.png" alt=""></p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-08-33.png" alt=""></p>
+</li>
+<li><p>选择网站并发连接数，同时连接的数目，“Decision Support(DSS)/OLAP（20个左右）“Online ”、 TransactionProcessing(OLTP)（500 个左右）”、“Manual Setting（手动设置，自己输一个数）”</p>
+<p>   <img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-08-42.png" alt=""></p>
+</li>
+<li><p>是否启用 TCP/IP 连接，设定端口，如果不启用，就只能在自己的机器上访问 mysql 数据库了，在这个页面上，您还可以选择“启用标准模式”（Enable Strict Mode），这样 MySQL 就不会允许细小的语法错误。如果是新手，建议您取消标准模式以减少麻烦。但熟悉 MySQL 以后，尽量使用标准模式，因为它可以降低有害数据进入数据库的可能性。按“Next”继续</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-08-48.png" alt=""></p>
+</li>
+<li><p>就是对 mysql 默认数据库语言编码进行设置（重要），一般选 UTF-8，按 “Next”继续。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-08-53.png" alt=""></p>
+</li>
+<li><p>选择是否将 mysql 安装为 windows 服务，还可以指定 Service Name（服务标识名称），是否将 mysql 的 bin目录加入到 Windows PATH（加入后，就可以直接使用 bin 下的文件，而不用指出目录名，比如连接，“mysql.exe -uusername -ppassword;”就可以了，不用指出 mysql.exe 的完整地址，很方便），我这里全部打上了勾，Service Name 不变。按“Next”继续。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-09-00.png" alt=""></p>
+</li>
+<li><p>询问是否要修改默认 root 用户（超级管理）的密码。“Enable root access from remote machines（是否允许 root 用户在其它的机器上登陆，如果要安全，就不要勾上，如果要方便，就勾上它）”。最后“Create An Anonymous Account（新建一个匿名用户，匿名用户可以连接数据库，不能操作数据，包括查询）”，一般就不用勾了，设置完毕，按“Next”继续。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-09-06.png" alt=""></p>
+</li>
+<li><p>确认设置无误，按“Execute”使设置生效，即完成 MYSQL 的安装和配置。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-09-11.png" alt=""></p>
+</li>
+</ol>
+<p>​    <img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-09-18.png" alt=""></p>
+<p><code>验证</code>:使用win+R–&gt;输入cmd–&gt; 输入mysql -uroot -proot，其中第一个root为你的用户名，第二个root为你刚才设置的密码。如出现下图所示，则证明安装成功。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-33-57.png" alt=""></p>
+<p>如未成功，卸载重装，方法如下。</p>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><ol>
+<li><p>去mysql的安装目录找到my.ini文件</p>
+<p>复制 datadir=”C:/ProgramData/MySQL/MySQL Server 5.5/Data/“</p>
+</li>
+<li><p>使用360或者电脑自带的卸载程序：卸载MySQL</p>
+</li>
+<li><p>删除C:/ProgramData目录下的MySQL文件夹（即第一步中的datadir里的MySQL所在目录）。</p>
+</li>
+</ol>
+<p><code>如仍然不行，尝试卸载后重启安装</code>。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li>MySQL服务启动<ul>
+<li>使用管理员权限打开cmd</li>
+<li>net start mysql : 启动mysql的服务（net stop mysql:关闭mysql服务）</li>
+</ul>
+</li>
+<li>MySQL登录<ul>
+<li>l连接本机：mysql -u用户名 -p密码</li>
+<li>连接其他电脑：mysql：mysql -hip -uroot -p连接目标的密码,其中ip为其他电脑的ip地址，h代表host/或者使用：mysql –host=ip –user=root –password=连接目标的密码</li>
+</ul>
+</li>
+<li>MySQL退出<ul>
+<li>命令台输入exit</li>
+</ul>
+</li>
+</ol>
+<h3 id="MySQL目录结构"><a href="#MySQL目录结构" class="headerlink" title="MySQL目录结构"></a>MySQL目录结构</h3><ol>
+<li>MySQL安装目录：basedir=”D:/develop/MySQL/“</li>
+<li>配置文件 my.ini</li>
+<li>MySQL数据目录：datadir=”C:/ProgramData/MySQL/MySQL Server 5.5/Data/“</li>
+<li>information_schema:存放的视图<br>mysql：存放核心数据库<br>performance_schema:对性能提升做操作<br><strong>以上三个尽量不要动，容易出问题</strong><br>test：可以随便动。初始化里面是空<br>我们在使用MySQL时，一般自己创建数据库</li>
+<li>几个概念，三者关系如下图所示：<ul>
+<li>数据库：文件夹</li>
+<li>表：文件</li>
+<li>数据</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-48-55.png" alt=""></p>
+<h2 id="客户端图形化工具：SQLYog"><a href="#客户端图形化工具：SQLYog" class="headerlink" title="客户端图形化工具：SQLYog"></a>客户端图形化工具：SQLYog</h2><p>SQLyog 是业界著名的 Webyog 公司出品的一款简洁高效、功能强大的图形化 MySQL 数据库管理工具。使用<br>SQLyog 可以快速直观地让您从世界的任何角落通过网络来维护远端的 MySQL 数据库。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>傻瓜式安装。安装包和破解码见文末。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-24_19-08-44.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>数据库学习 - MySQL学习</category>
+      </categories>
+      <tags>
+        <tag>MySQL安装</tag>
+        <tag>SQLyog安装</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL学习</title>
+    <url>/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>本文所使用的是MySQL5.5.40和可视化工具SQLyog，其安装及卸载教程：[请点击这里]</p>
+<h2 id="数据库的基本概念"><a href="#数据库的基本概念" class="headerlink" title="数据库的基本概念"></a>数据库的基本概念</h2><ol>
+<li><p>数据库的英文单词： DataBase 简称 ： DB</p>
+</li>
+<li><p>什么数据库？<br> 用于存储和管理数据的仓库。</p>
+</li>
+<li><p>数据库的特点：</p>
+<ul>
+<li><strong>持久化存储数据</strong>的。其实数据库就是一个<strong>文件系统</strong></li>
+<li>方便存储和管理数据</li>
+<li>使用了统一的方式操作数据库 – SQL语言</li>
+</ul>
+</li>
+<li><p>常见的数据库软件</p>
+<ul>
+<li>MySQL</li>
+<li>Oracle    </li>
+</ul>
+</li>
+</ol>
+<h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><ol>
+<li><p>什么是SQL？</p>
+<pre><code>Structured Query Language：**结构化查询语言**。其实就是定义了操作所有**关系型数据库**的规则。每一种数据库操作的方式存在不一样的地方，称为“方言”。</code></pre></li>
+<li><p>SQL通用语法</p>
+<ul>
+<li><p>SQL 语句可以单行或多行书写，以分号结尾。</p>
+</li>
+<li><p>可使用空格和缩进来增强语句的可读性。</p>
+</li>
+<li><p>MySQL 数据库的 SQL 语句不区分大小写，关键字建议使用大写。</p>
+</li>
+</ul>
+</li>
+<li><p>3 种注释</p>
+<ul>
+<li><p>单行注释: – 注释内容（注意–后由一个空格）或 # 注释内容(mysql 特有) </p>
+</li>
+<li><p>多行注释: /* 注释 */</p>
+</li>
+</ul>
+</li>
+<li><p>SQL分类</p>
+<ul>
+<li><p>DDL(Data <strong>Definition</strong> Language)数据定义语言：用来定义数据库对象：<strong>数据库，表</strong>，列等。关键字：create, drop,alter 等</p>
+</li>
+<li><p>DML(Data <strong>Manipulation</strong> Language)数据操作语言：用来对数据库中表的<strong>数据进行增删改</strong>。关键字：insert, delete, update 等</p>
+</li>
+<li><p>DQL(Data <strong>Query</strong> Language)数据查询语言：用来<strong>查询</strong>数据库中表的记录<strong>(数据)</strong>。关键字：select, where 等</p>
+</li>
+<li><p>DCL(Data <strong>Control</strong> Language)数据控制语言(了解)：用来定义数据库的<strong>访问权限和安全级别</strong>，及创建用户。关键字：GRANT， REVOKE 等</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>四者关系如下图所示：</p>
+<p><img src="../images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-49-07.png" alt=""></p>
+<h3 id="DDL-操作数据库、表"><a href="#DDL-操作数据库、表" class="headerlink" title="DDL:操作数据库、表"></a>DDL:操作数据库、表</h3><h4 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h4><h5 id="C-Create-创建"><a href="#C-Create-创建" class="headerlink" title="C(Create):创建"></a>C(Create):创建</h5><ul>
+<li>创建数据库：<code>create database 数据库名称;</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE student (</span><br><span class="line">    id INT,</span><br><span class="line">    -- 编号</span><br><span class="line">    NAME VARCHAR(20), -- 姓名</span><br><span class="line">    age INT, -- 年龄</span><br><span class="line">    sex VARCHAR(5),</span><br><span class="line">    -- 性别</span><br><span class="line">    address VARCHAR(100),</span><br><span class="line">    -- 地址</span><br><span class="line">    math INT, -- 数学</span><br><span class="line">    english INT -- 英语</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>创建数据库，判断不存在，再创建：<code>create database if not exists 数据库名称;</code></p>
+</li>
+<li><p>创建数据库，并指定字符集: <code>create database 数据库名称 character set 字符集名;</code></p>
+</li>
+</ul>
+<p>例如： 创建db4数据库，判断是否存在，并制定字符集为gbk。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create database if not exists db4 character set gbk;</span><br></pre></td></tr></table></figure>
+
+<h5 id="D-Delete-删除"><a href="#D-Delete-删除" class="headerlink" title="D(Delete):删除"></a>D(Delete):删除</h5><ul>
+<li>删除数据库:<code>drop database 数据库名称;</code></li>
+<li>判断数据库存在，存在再删除:<code>drop database if exists 数据库名称;</code></li>
+</ul>
+<h5 id="U-Update-修改"><a href="#U-Update-修改" class="headerlink" title="U(Update):修改"></a>U(Update):修改</h5><ul>
+<li>修改数据库的字符集：<code>alter database 数据库名称 character set 字符集名称;</code></li>
+</ul>
+<h5 id="R-Retrieve-查询"><a href="#R-Retrieve-查询" class="headerlink" title="R(Retrieve):查询"></a>R(Retrieve):查询</h5><ul>
+<li>查询所有数据库的名称：<code>show databases;</code></li>
+<li>查询某个数据库的字符集（查询某个数据库的创建语句）：<code>show create database 数据库名称;</code></li>
+</ul>
+<h5 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h5><ul>
+<li>查询当前正在使用的数据库名称:<code>select database();</code></li>
+<li>使用数据库:<code>use 数据库名称;</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">    列名1 数据类型1,</span><br><span class="line">    列名2 数据类型2,</span><br><span class="line">    ....</span><br><span class="line">    列名n 数据类型n</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：最后一列，不需要加逗号”,”</strong></p>
+<h4 id="操作表"><a href="#操作表" class="headerlink" title="操作表"></a>操作表</h4><h5 id="C-Create-创建表"><a href="#C-Create-创建表" class="headerlink" title="C(Create)创建表"></a>C(Create)创建表</h5><p>常用数据库类型:</p>
+<ul>
+<li><p>int：整数类型</p>
+</li>
+<li><p>double:小数类型</p>
+</li>
+<li><p>date:日期，只包含年月日，yyyy-MM-dd</p>
+</li>
+<li><p>datetime:日期，包含年月日时分秒     yyyy-MM-dd HH:mm:ss</p>
+</li>
+<li><p>timestamp:时间戳类型,包含年月日时分秒,yyyy-MM-dd HH:mm:ss<br>如果将来不给这个字段赋值，或赋值为null，则默认使用当前的系统时间，来自动赋值</p>
+</li>
+<li><p>varchar：字符串。zhangsan 8个字符  张三 2个字符</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table student(</span><br><span class="line">    id int,</span><br><span class="line">    name varchar(32),</span><br><span class="line">    age int,</span><br><span class="line">    -- 表示这个数最多有4位，小数有1位。最大为999.9 </span><br><span class="line">    score double(4,1),</span><br><span class="line">    birthday date,</span><br><span class="line">    insert_time timestamp</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>复制表：<code>create table 表名 like 被复制的表名;</code></li>
+</ul>
+<p>详细数据库类型：</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-24_18-55-06.png" alt=""></p>
+<h5 id="D-Delete-删除-1"><a href="#D-Delete-删除-1" class="headerlink" title="D(Delete):删除"></a>D(Delete):删除</h5><ul>
+<li>drop table 表名;</li>
+<li>drop table  if exists 表名;</li>
+</ul>
+<h5 id="U-Update-修改-1"><a href="#U-Update-修改-1" class="headerlink" title="U(Update):修改"></a>U(Update):修改</h5><ul>
+<li>修改表名:<code>alter table 表名 rename to 新的表名;</code></li>
+<li><ul>
+<li>查询表的字符集:<code>show create table 表名;</code></li>
+</ul>
+</li>
+<li>修改表的字符集: <code>alter table 表名 character 字符集名称;</code>,例如utf8，gbk等。</li>
+<li>添加一列:<code>alter table 表名 add 列名 数据类型;</code></li>
+<li>修改列名称,类型<ul>
+<li>既改名字也改类型：<code>alter table 表名 change 列名 新列别 新数据类型;</code></li>
+<li>只修改类型：<code>alter table 表名 modify 列名 新数据类型;</code></li>
+</ul>
+</li>
+<li>删除列：<code>alter table 表名 drop 列名;</code></li>
+</ul>
+<h5 id="R-Retrieve-查询-1"><a href="#R-Retrieve-查询-1" class="headerlink" title="R(Retrieve):查询"></a>R(Retrieve):查询</h5><ul>
+<li>查询某个数据库中所有的表名称:<code>show tables;</code></li>
+<li>查询表结构：<code>desc 表名;</code></li>
+</ul>
+<h3 id="DML：增删改表中的数据"><a href="#DML：增删改表中的数据" class="headerlink" title="DML：增删改表中的数据"></a>DML：增删改表中的数据</h3><h4 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h4><p><code>insert into 表名(列名1,列名2,...列名n) values(值1,值2,...值n);</code></p>
+<p>注意：<br>    1. 列名和值要一一对应。<br>    2. 如果表名后，不定义列名，则默认给所有列添加值（必须给所有字段赋值）<br>        <code>insert into 表名 values(值1,值2,...值n);</code><br>    3. 除了数字类型，其他类型（例如date等）需要使用引号(单双都可以)引起来<br>    4. 最后一个列名和值后面不加逗号</p>
+<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><p><code>delete from 表名 [where 条件];</code></p>
+<p>注意：<br>    1. 如果不加条件，则删除表中所有记录。<br>    2. 如果要删除所有记录<br>    3. delete from 表名; – 不推荐使用。有多少条记录就会执行多少次删除操作<br>    4. TRUNCATE TABLE 表名; – 推荐使用，效率更高 先删除表(与drop不同，删除后会再创建一张一样的空表)。<br>    5. 中括号代表，语句里的where条件为可选项。</p>
+<h4 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h4><p><code>update 表名 set 列名1 = 值1, 列名2 = 值2,... [where 条件];</code></p>
+<p>注意：如果不加任何条件，则会将表中所有记录全部修改。</p>
+<h3 id="DQL：查询表中的记录"><a href="#DQL：查询表中的记录" class="headerlink" title="DQL：查询表中的记录"></a>DQL：查询表中的记录</h3><p><code>select * from 表名;</code></p>
+<p>语法：</p>
+<ul>
+<li>select<br>  字段列表(可以为多个字段)</li>
+<li>from<br>  表名列表(可以为多个表)</li>
+<li>where<br>  条件列表(可以为多个条件    )</li>
+<li>group by<br>  分组字段</li>
+<li>having<br>  分组之后的条件</li>
+<li>order by<br>  排序</li>
+<li>limit<br>  分页限定</li>
+</ul>
+<h4 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h4><ul>
+<li><p>多个字段的查询:<br>  <code>select 字段名1，字段名2... from 表名；</code></p>
+<p>  注意：如果查询所有字段，则可以使用*来替代字段列表。</p>
+</li>
+<li><p>去除重复：<br> <code>distinct（加到字段前面）</code></p>
+</li>
+<li><p>起别名：<code>as</code>,as也可以省略（跟到字段名后面）</p>
+</li>
+<li><p>计算列</p>
+<ul>
+<li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算），例如：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT math AS 数学, english AS 英语, math + english AS 总分	FROM student;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ifnull(表达式1,表达式2)：null参与的运算，计算结果都为null。表达式1：哪个字段        需要判断是否为null。如果该字段为null后的替换值。</li>
+</ul>
+</li>
+</ul>
+<h4 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h4><p><code>where子句后跟条件</code></p>
+<p>运算符:</p>
+<ul>
+<li><blockquote>
+<p>、&lt; 、&lt;= 、&gt;= 、=(只有一个等号) 、&lt;&gt;(等价于!=)</p>
+</blockquote>
+</li>
+<li>BETWEEN…AND  </li>
+<li>IN( 集合) </li>
+<li>LIKE：模糊查询</li>
+<li>占位符：</li>
+<li>_:单个任意字符</li>
+<li>%：多个任意字符</li>
+<li>IS NULL  </li>
+<li>and  或 &amp;&amp;</li>
+<li>or  或 || </li>
+<li>not  或 !</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询年龄大于20岁</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &gt; 20;</span><br><span class="line"></span><br><span class="line">-- 查询年龄等于20岁,这里是一个等号</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &#x3D; 20;</span><br><span class="line"></span><br><span class="line">-- 查询年龄不等于20岁</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age !&#x3D; 20;</span><br><span class="line">SELECT * FROM student WHERE age &lt;&gt; 20;</span><br><span class="line"></span><br><span class="line">-- 查询年龄大于等于20 小于等于30</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &gt;&#x3D; 20 &amp;&amp;  age &lt;&#x3D;30;</span><br><span class="line">SELECT * FROM student WHERE age &gt;&#x3D; 20 AND  age &lt;&#x3D;30;（**推荐使用AND，不推荐使用&amp;&amp;**）</span><br><span class="line">SELECT * FROM student WHERE age BETWEEN 20 AND 30;</span><br><span class="line"></span><br><span class="line">-- 查询年龄22岁，18岁，25岁的信息</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &#x3D; 22 OR age &#x3D; 18 OR age &#x3D; 25</span><br><span class="line">SELECT * FROM student WHERE age IN (22,18,25);</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩为null</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE english &#x3D; NULL; -- 不对的。null值不能使用 &#x3D; （!&#x3D;） 判断</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE english IS NULL;</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩不为null</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE english  IS NOT NULL;</span><br></pre></td></tr></table></figure>
+
+<h4 id="like"><a href="#like" class="headerlink" title="like"></a>like</h4><p>占位符：</p>
+<ul>
+<li>下划线_：代表单个任意字符</li>
+<li>百分号%：代表多个任意字符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询姓马的有哪些？ like</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &#39;马%&#39;;</span><br><span class="line"></span><br><span class="line">-- 查询姓名第二个字是化的人</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &quot;_化%&quot;;</span><br><span class="line"></span><br><span class="line">-- 查询姓名是3个字的人</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &#39;___&#39;;</span><br><span class="line"></span><br><span class="line">-- 查询姓名中包含德的人</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &#39;%德%&#39;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="MySQL约束"><a href="#MySQL约束" class="headerlink" title="MySQL约束"></a>MySQL约束</h2><h2 id="MySQL多表"><a href="#MySQL多表" class="headerlink" title="MySQL多表"></a>MySQL多表</h2><h2 id="MySQL事务"><a href="#MySQL事务" class="headerlink" title="MySQL事务"></a>MySQL事务</h2>]]></content>
+      <categories>
+        <category>数据库学习 - MySQL学习</category>
+      </categories>
+      <tags>
+        <tag>MySQL学习</tag>
+        <tag>基础</tag>
+        <tag>多表及事务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jdk1.8、Maven3.6.3和idea2019.3安装教程</title>
+    <url>/2020/02/21/jdk1.8%E3%80%81Maven3.6.3%E5%92%8Cidea2019.3%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="安装jdk1-8"><a href="#安装jdk1-8" class="headerlink" title="安装jdk1.8"></a>安装jdk1.8</h2><p><strong>本文推荐</strong>使用压缩版jdk并解压使用，原因是比起exe安装，这样我们<code>可以支持在一台电脑上配置多个版本jdk</code>。</p>
 <p>链接：<a href="https://pan.baidu.com/s/1hXAk3m6lDedbMS9Ro0QX7A" target="_blank" rel="noopener">https://pan.baidu.com/s/1hXAk3m6lDedbMS9Ro0QX7A</a><br>提取码：bs3n </p>
 <h3 id="配置jdk1-8"><a href="#配置jdk1-8" class="headerlink" title="配置jdk1.8"></a>配置jdk1.8</h3><ul>
@@ -76,12 +403,51 @@
 <p>在使用spring boot项目时，我们还要在pom.xml里面加上如下依赖，插件生效。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">            &lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><h4 id="热加载与热部署"><a href="#热加载与热部署" class="headerlink" title="热加载与热部署"></a>热加载与热部署</h4><h4 id="GsonFormat"><a href="#GsonFormat" class="headerlink" title="GsonFormat"></a>GsonFormat</h4><h4 id="Maven-Helper"><a href="#Maven-Helper" class="headerlink" title="Maven Helper"></a>Maven Helper</h4>]]></content>
+<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><p><code>在java类上使用@Data注解</code>，将为我们在编译期自动生成：</p>
+<ul>
+<li>成员变量的get和set方法</li>
+<li>equals方法</li>
+<li>canEqual方法</li>
+<li>hashCode方法</li>
+<li>toString方法</li>
+</ul>
+<p><code>在java类上使用@Slf4j注解</code>：将在编译期自动帮我们引入Logger日志常量，我们在代码中就直接使用log.info或log.debug打印日志即可。下图中红色代码就用Slf4j注解代替就可以了。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">log.info(<span class="string">"test"</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>在java类上使用@Builder注解</code>：我们可以使用如下代码为对象属性赋值:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Article article3 = Article.builder().</span><br><span class="line">               id(<span class="number">3L</span>).</span><br><span class="line">               author(<span class="string">"莫言"</span>).</span><br><span class="line">               build();</span><br></pre></td></tr></table></figure>
+
+<p><code>在java类上使用@AllArgsConstructor注解和@NoArgsConstructor注解</code>：将为我们在编译期自动生成：全参构造函数或无参构造函数。</p>
+<p>更多使用方法参见：<a href="https://github.com/mplushnikov/lombok-intellij-plugin" target="_blank" rel="noopener">https://github.com/mplushnikov/lombok-intellij-plugin</a></p>
+<p><img src="/images/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/TIM%E6%88%AA%E5%9B%BE20200222125156.png" alt=""></p>
+<h3 id="热加载与热部署"><a href="#热加载与热部署" class="headerlink" title="热加载与热部署"></a>热加载与热部署</h3><p><code>这是一种对于SpringBoot而言比较常见的一种实现方式。</code>在实际的开发过程中，我们经常修改代码之后，手动的重启项目，查看修改效果。热加载（热部署）就是能够快速的、自动的帮我们将修改代码自动更新，避免手动重启。——<code>devtools实现热加载</code></p>
+<h4 id="引入devtools的maven依赖"><a href="#引入devtools的maven依赖" class="headerlink" title="引入devtools的maven依赖"></a>引入devtools的maven依赖</h4><p>spring-boot-devtools从名称就可以看出来，是开发者工具包，其主要的功能就是实现热加载。其实现原理就是两个ClassLoader，一个负责加载那些不会经常改变的文件，比如：第三方jar包；一个负责加载可能经常改变的类，比如我们自己在项目中写的代码，被称为restart ClassLoader。当有代码发生改变的时候，重建一个restart ClassLoader，原有的restart ClassLoader被丢掉。由于每次重新加载的内容较少，所以速度比手动重启更快一些。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">   &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>加入6-8行，即<configuration>里的内容：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;plugins&gt;</span><br><span class="line">        &lt;plugin&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;configuration&gt;		</span><br><span class="line">                &lt;fork&gt;true&lt;/fork&gt; 	</span><br><span class="line">            &lt;/configuration&gt; 	</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line">    &lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置IDEA"><a href="#设置IDEA" class="headerlink" title="设置IDEA"></a>设置IDEA</h4><p>自动化编译配置： “File” -&gt; “Settings” -&gt; “Build,Execution,Deplyment” -&gt; “Compiler”，选中打勾 “Build project automatically” 。这是一种重新自动化的编译整体项目的方法。但是笔者一般不这么做，因为IDEA的文件是自动保存的，你想修改一个字符串，有可能你只修改完成第一个字符它就重新编译了。所以，笔者一般修改完成之后，使用<code>Ctrl + Shift + F9</code>快捷键对修改类重新编译，而不是做项目的自动化整体编译。</p>
+<p><img src="/images/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/TIM%E6%88%AA%E5%9B%BE20200222130333.png" alt=""></p>
+<p>使用Ctrl+Shift+Alt+/-&gt;registry，将红色框内打钩：</p>
+<p><img src="/images/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/TIM%E6%88%AA%E5%9B%BE20200222130832.png" alt=""></p>
+<p>修改spring-boot-starter的稳定版本：</p>
+<p><img src="/images/Idea%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/TIM%E6%88%AA%E5%9B%BE20200222162456.png" alt=""></p>
+<h3 id="JsonFormat"><a href="#JsonFormat" class="headerlink" title="JsonFormat"></a>JsonFormat</h3><p>GsonFormat插件工具可以快速的将JSON转换为实体类</p>
+<h4 id="安装方法-1"><a href="#安装方法-1" class="headerlink" title="安装方法"></a>安装方法</h4><p>打开 IDEA 的 File-&gt;Settings 面板，并选择 Plugins 选项，点击Marketplace，在搜索框输入”JsonFormat”，结果中找到JsonFormat点击install，然后重启 IDEA。</p>
+<h4 id="如何使用-1"><a href="#如何使用-1" class="headerlink" title="如何使用"></a>如何使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"id"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">"author"</span>: <span class="string">"zimug"</span>,</span><br><span class="line">    <span class="string">"title"</span>: <span class="string">"手摸手教你开发spring boot"</span>,</span><br><span class="line">    <span class="string">"content"</span>: <span class="string">"c"</span>,</span><br><span class="line">    <span class="string">"createTime"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="string">"reader"</span>:[&#123;<span class="string">"name"</span>:<span class="string">"zimug"</span>,<span class="string">"age"</span>:<span class="number">18</span>&#125;,&#123;<span class="string">"name"</span>:<span class="string">"kobe"</span>,<span class="string">"age"</span>:<span class="number">37</span>&#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>插件安装好之后，先定义一个空的实体类（只有类名和花括号），使用快捷键<code>Alt + S</code>或<code>Alt + Insert</code>调出代码生成配置页面，相信后面你就都会了。这是根据JSON生成出来的对应的java bean的代码。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Article</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * createTime :</span></span><br><span class="line"><span class="comment">     * author : zimug</span></span><br><span class="line"><span class="comment">     * reader : [&#123;"name":"zimug","age":18&#125;,&#123;"name":"kobe","age":37&#125;]</span></span><br><span class="line"><span class="comment">     * id : 1</span></span><br><span class="line"><span class="comment">     * title : 手摸手教你开发spring boot</span></span><br><span class="line"><span class="comment">     * content : c</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String createTime;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line">    <span class="keyword">private</span> List&lt;ReaderEntity&gt; reader;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="keyword">private</span> String content;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCreateTime</span><span class="params">(String createTime)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.createTime = createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAuthor</span><span class="params">(String author)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setReader</span><span class="params">(List&lt;ReaderEntity&gt; reader)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.reader = reader;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.title = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContent</span><span class="params">(String content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCreateTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;ReaderEntity&gt; <span class="title">getReader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reader;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getContent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReaderEntity</span> </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * name : zimug</span></span><br><span class="line"><span class="comment">         * age : 18</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.age = age;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> age;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Maven-Helper"><a href="#Maven-Helper" class="headerlink" title="Maven Helper"></a>Maven Helper</h3><p>日常开发中，可能经常会遇到jar包冲突等问题，就需要通过查看maven依赖树来查看依赖情况。这种方式不是很高效，这里推荐一个插件，安装之后，直接打开pom文件，即可查看依赖数，还能自动分析是否存在jar包冲突。</p>
+]]></content>
       <categories>
-        <category>无</category>
+        <category>软件安装 - Java相关</category>
       </categories>
       <tags>
-        <tag>无</tag>
+        <tag>idea安装及破解</tag>
+        <tag>插件安装</tag>
       </tags>
   </entry>
   <entry>

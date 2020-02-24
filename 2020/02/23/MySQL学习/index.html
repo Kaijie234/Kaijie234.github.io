@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kaijie.tech","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":"ture","show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文主要讲解了：MySQL基础、约束、多表及事务等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL学习">
+<meta property="og:url" content="http://kaijie.tech/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Kaijie&#39;s Blog">
+<meta property="og:description" content="本文主要讲解了：MySQL基础、约束、多表及事务等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://kaijie.tech/2020/02/23/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-49-07.png">
+<meta property="og:image" content="http://kaijie.tech/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-24_18-55-06.png">
+<meta property="article:published_time" content="2020-02-23T12:52:33.000Z">
+<meta property="article:modified_time" content="2020-02-24T11:51:12.187Z">
+<meta property="article:author" content="Kaijie">
+<meta property="article:tag" content="MySQL学习">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="多表及事务">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kaijie.tech/2020/02/23/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-49-07.png">
+
+<link rel="canonical" href="http://kaijie.tech/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>MySQL学习 | Kaijie's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Kaijie's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kaijie's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-top">
+
+    <a href="/top/" rel="section"><i class="fa fa-fw fa-signal"></i>阅读排行</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kaijie.tech/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Kaijie">
+      <meta itemprop="description" content="我的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kaijie's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-23 20:52:33" itemprop="dateCreated datePublished" datetime="2020-02-23T20:52:33+08:00">2020-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-24 19:51:12" itemprop="dateModified" datetime="2020-02-24T19:51:12+08:00">2020-02-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0-MySQL%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库学习 - MySQL学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/" class="post-meta-item leancloud_visitors" data-flag-title="MySQL学习" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文所使用的是MySQL5.5.40和可视化工具SQLyog，其安装及卸载教程：[请点击这里]</p>
+<h2 id="数据库的基本概念"><a href="#数据库的基本概念" class="headerlink" title="数据库的基本概念"></a>数据库的基本概念</h2><ol>
+<li><p>数据库的英文单词： DataBase 简称 ： DB</p>
+</li>
+<li><p>什么数据库？<br> 用于存储和管理数据的仓库。</p>
+</li>
+<li><p>数据库的特点：</p>
+<ul>
+<li><strong>持久化存储数据</strong>的。其实数据库就是一个<strong>文件系统</strong></li>
+<li>方便存储和管理数据</li>
+<li>使用了统一的方式操作数据库 – SQL语言</li>
+</ul>
+</li>
+<li><p>常见的数据库软件</p>
+<ul>
+<li>MySQL</li>
+<li>Oracle    </li>
+</ul>
+</li>
+</ol>
+<h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><ol>
+<li><p>什么是SQL？</p>
+<pre><code>Structured Query Language：**结构化查询语言**。其实就是定义了操作所有**关系型数据库**的规则。每一种数据库操作的方式存在不一样的地方，称为“方言”。</code></pre></li>
+<li><p>SQL通用语法</p>
+<ul>
+<li><p>SQL 语句可以单行或多行书写，以分号结尾。</p>
+</li>
+<li><p>可使用空格和缩进来增强语句的可读性。</p>
+</li>
+<li><p>MySQL 数据库的 SQL 语句不区分大小写，关键字建议使用大写。</p>
+</li>
+</ul>
+</li>
+<li><p>3 种注释</p>
+<ul>
+<li><p>单行注释: – 注释内容（注意–后由一个空格）或 # 注释内容(mysql 特有) </p>
+</li>
+<li><p>多行注释: /* 注释 */</p>
+</li>
+</ul>
+</li>
+<li><p>SQL分类</p>
+<ul>
+<li><p>DDL(Data <strong>Definition</strong> Language)数据定义语言：用来定义数据库对象：<strong>数据库，表</strong>，列等。关键字：create, drop,alter 等</p>
+</li>
+<li><p>DML(Data <strong>Manipulation</strong> Language)数据操作语言：用来对数据库中表的<strong>数据进行增删改</strong>。关键字：insert, delete, update 等</p>
+</li>
+<li><p>DQL(Data <strong>Query</strong> Language)数据查询语言：用来<strong>查询</strong>数据库中表的记录<strong>(数据)</strong>。关键字：select, where 等</p>
+</li>
+<li><p>DCL(Data <strong>Control</strong> Language)数据控制语言(了解)：用来定义数据库的<strong>访问权限和安全级别</strong>，及创建用户。关键字：GRANT， REVOKE 等</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>四者关系如下图所示：</p>
+<p><img src="../images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-23_21-49-07.png" alt=""></p>
+<h3 id="DDL-操作数据库、表"><a href="#DDL-操作数据库、表" class="headerlink" title="DDL:操作数据库、表"></a>DDL:操作数据库、表</h3><h4 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h4><h5 id="C-Create-创建"><a href="#C-Create-创建" class="headerlink" title="C(Create):创建"></a>C(Create):创建</h5><ul>
+<li>创建数据库：<code>create database 数据库名称;</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE student (</span><br><span class="line">    id INT,</span><br><span class="line">    -- 编号</span><br><span class="line">    NAME VARCHAR(20), -- 姓名</span><br><span class="line">    age INT, -- 年龄</span><br><span class="line">    sex VARCHAR(5),</span><br><span class="line">    -- 性别</span><br><span class="line">    address VARCHAR(100),</span><br><span class="line">    -- 地址</span><br><span class="line">    math INT, -- 数学</span><br><span class="line">    english INT -- 英语</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>创建数据库，判断不存在，再创建：<code>create database if not exists 数据库名称;</code></p>
+</li>
+<li><p>创建数据库，并指定字符集: <code>create database 数据库名称 character set 字符集名;</code></p>
+</li>
+</ul>
+<p>例如： 创建db4数据库，判断是否存在，并制定字符集为gbk。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database if not exists db4 character set gbk;</span><br></pre></td></tr></table></figure>
+
+<h5 id="D-Delete-删除"><a href="#D-Delete-删除" class="headerlink" title="D(Delete):删除"></a>D(Delete):删除</h5><ul>
+<li>删除数据库:<code>drop database 数据库名称;</code></li>
+<li>判断数据库存在，存在再删除:<code>drop database if exists 数据库名称;</code></li>
+</ul>
+<h5 id="U-Update-修改"><a href="#U-Update-修改" class="headerlink" title="U(Update):修改"></a>U(Update):修改</h5><ul>
+<li>修改数据库的字符集：<code>alter database 数据库名称 character set 字符集名称;</code></li>
+</ul>
+<h5 id="R-Retrieve-查询"><a href="#R-Retrieve-查询" class="headerlink" title="R(Retrieve):查询"></a>R(Retrieve):查询</h5><ul>
+<li>查询所有数据库的名称：<code>show databases;</code></li>
+<li>查询某个数据库的字符集（查询某个数据库的创建语句）：<code>show create database 数据库名称;</code></li>
+</ul>
+<h5 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h5><ul>
+<li>查询当前正在使用的数据库名称:<code>select database();</code></li>
+<li>使用数据库:<code>use 数据库名称;</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">    列名1 数据类型1,</span><br><span class="line">    列名2 数据类型2,</span><br><span class="line">    ....</span><br><span class="line">    列名n 数据类型n</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：最后一列，不需要加逗号”,”</strong></p>
+<h4 id="操作表"><a href="#操作表" class="headerlink" title="操作表"></a>操作表</h4><h5 id="C-Create-创建表"><a href="#C-Create-创建表" class="headerlink" title="C(Create)创建表"></a>C(Create)创建表</h5><p>常用数据库类型:</p>
+<ul>
+<li><p>int：整数类型</p>
+</li>
+<li><p>double:小数类型</p>
+</li>
+<li><p>date:日期，只包含年月日，yyyy-MM-dd</p>
+</li>
+<li><p>datetime:日期，包含年月日时分秒     yyyy-MM-dd HH:mm:ss</p>
+</li>
+<li><p>timestamp:时间戳类型,包含年月日时分秒,yyyy-MM-dd HH:mm:ss<br>如果将来不给这个字段赋值，或赋值为null，则默认使用当前的系统时间，来自动赋值</p>
+</li>
+<li><p>varchar：字符串。zhangsan 8个字符  张三 2个字符</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table student(</span><br><span class="line">    id int,</span><br><span class="line">    name varchar(32),</span><br><span class="line">    age int,</span><br><span class="line">    -- 表示这个数最多有4位，小数有1位。最大为999.9 </span><br><span class="line">    score double(4,1),</span><br><span class="line">    birthday date,</span><br><span class="line">    insert_time timestamp</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>复制表：<code>create table 表名 like 被复制的表名;</code></li>
+</ul>
+<p>详细数据库类型：</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-24_18-55-06.png" alt=""></p>
+<h5 id="D-Delete-删除-1"><a href="#D-Delete-删除-1" class="headerlink" title="D(Delete):删除"></a>D(Delete):删除</h5><ul>
+<li>drop table 表名;</li>
+<li>drop table  if exists 表名;</li>
+</ul>
+<h5 id="U-Update-修改-1"><a href="#U-Update-修改-1" class="headerlink" title="U(Update):修改"></a>U(Update):修改</h5><ul>
+<li>修改表名:<code>alter table 表名 rename to 新的表名;</code></li>
+<li><ul>
+<li>查询表的字符集:<code>show create table 表名;</code></li>
+</ul>
+</li>
+<li>修改表的字符集: <code>alter table 表名 character 字符集名称;</code>,例如utf8，gbk等。</li>
+<li>添加一列:<code>alter table 表名 add 列名 数据类型;</code></li>
+<li>修改列名称,类型<ul>
+<li>既改名字也改类型：<code>alter table 表名 change 列名 新列别 新数据类型;</code></li>
+<li>只修改类型：<code>alter table 表名 modify 列名 新数据类型;</code></li>
+</ul>
+</li>
+<li>删除列：<code>alter table 表名 drop 列名;</code></li>
+</ul>
+<h5 id="R-Retrieve-查询-1"><a href="#R-Retrieve-查询-1" class="headerlink" title="R(Retrieve):查询"></a>R(Retrieve):查询</h5><ul>
+<li>查询某个数据库中所有的表名称:<code>show tables;</code></li>
+<li>查询表结构：<code>desc 表名;</code></li>
+</ul>
+<h3 id="DML：增删改表中的数据"><a href="#DML：增删改表中的数据" class="headerlink" title="DML：增删改表中的数据"></a>DML：增删改表中的数据</h3><h4 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h4><p><code>insert into 表名(列名1,列名2,...列名n) values(值1,值2,...值n);</code></p>
+<p>注意：<br>    1. 列名和值要一一对应。<br>    2. 如果表名后，不定义列名，则默认给所有列添加值（必须给所有字段赋值）<br>        <code>insert into 表名 values(值1,值2,...值n);</code><br>    3. 除了数字类型，其他类型（例如date等）需要使用引号(单双都可以)引起来<br>    4. 最后一个列名和值后面不加逗号</p>
+<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><p><code>delete from 表名 [where 条件];</code></p>
+<p>注意：<br>    1. 如果不加条件，则删除表中所有记录。<br>    2. 如果要删除所有记录<br>    3. delete from 表名; – 不推荐使用。有多少条记录就会执行多少次删除操作<br>    4. TRUNCATE TABLE 表名; – 推荐使用，效率更高 先删除表(与drop不同，删除后会再创建一张一样的空表)。<br>    5. 中括号代表，语句里的where条件为可选项。</p>
+<h4 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h4><p><code>update 表名 set 列名1 = 值1, 列名2 = 值2,... [where 条件];</code></p>
+<p>注意：如果不加任何条件，则会将表中所有记录全部修改。</p>
+<h3 id="DQL：查询表中的记录"><a href="#DQL：查询表中的记录" class="headerlink" title="DQL：查询表中的记录"></a>DQL：查询表中的记录</h3><p><code>select * from 表名;</code></p>
+<p>语法：</p>
+<ul>
+<li>select<br>  字段列表(可以为多个字段)</li>
+<li>from<br>  表名列表(可以为多个表)</li>
+<li>where<br>  条件列表(可以为多个条件    )</li>
+<li>group by<br>  分组字段</li>
+<li>having<br>  分组之后的条件</li>
+<li>order by<br>  排序</li>
+<li>limit<br>  分页限定</li>
+</ul>
+<h4 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h4><ul>
+<li><p>多个字段的查询:<br>  <code>select 字段名1，字段名2... from 表名；</code></p>
+<p>  注意：如果查询所有字段，则可以使用*来替代字段列表。</p>
+</li>
+<li><p>去除重复：<br> <code>distinct（加到字段前面）</code></p>
+</li>
+<li><p>起别名：<code>as</code>,as也可以省略（跟到字段名后面）</p>
+</li>
+<li><p>计算列</p>
+<ul>
+<li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算），例如：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT math AS 数学, english AS 英语, math + english AS 总分	FROM student;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ifnull(表达式1,表达式2)：null参与的运算，计算结果都为null。表达式1：哪个字段        需要判断是否为null。如果该字段为null后的替换值。</li>
+</ul>
+</li>
+</ul>
+<h4 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h4><p><code>where子句后跟条件</code></p>
+<p>运算符:</p>
+<ul>
+<li><blockquote>
+<p>、&lt; 、&lt;= 、&gt;= 、=(只有一个等号) 、&lt;&gt;(等价于!=)</p>
+</blockquote>
+</li>
+<li>BETWEEN…AND  </li>
+<li>IN( 集合) </li>
+<li>LIKE：模糊查询</li>
+<li>占位符：</li>
+<li>_:单个任意字符</li>
+<li>%：多个任意字符</li>
+<li>IS NULL  </li>
+<li>and  或 &amp;&amp;</li>
+<li>or  或 || </li>
+<li>not  或 !</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">-- 查询年龄大于20岁</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &gt; 20;</span><br><span class="line"></span><br><span class="line">-- 查询年龄等于20岁,这里是一个等号</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &#x3D; 20;</span><br><span class="line"></span><br><span class="line">-- 查询年龄不等于20岁</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age !&#x3D; 20;</span><br><span class="line">SELECT * FROM student WHERE age &lt;&gt; 20;</span><br><span class="line"></span><br><span class="line">-- 查询年龄大于等于20 小于等于30</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &gt;&#x3D; 20 &amp;&amp;  age &lt;&#x3D;30;</span><br><span class="line">SELECT * FROM student WHERE age &gt;&#x3D; 20 AND  age &lt;&#x3D;30;（**推荐使用AND，不推荐使用&amp;&amp;**）</span><br><span class="line">SELECT * FROM student WHERE age BETWEEN 20 AND 30;</span><br><span class="line"></span><br><span class="line">-- 查询年龄22岁，18岁，25岁的信息</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &#x3D; 22 OR age &#x3D; 18 OR age &#x3D; 25</span><br><span class="line">SELECT * FROM student WHERE age IN (22,18,25);</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩为null</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE english &#x3D; NULL; -- 不对的。null值不能使用 &#x3D; （!&#x3D;） 判断</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE english IS NULL;</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩不为null</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE english  IS NOT NULL;</span><br></pre></td></tr></table></figure>
+
+<h4 id="like"><a href="#like" class="headerlink" title="like"></a>like</h4><p>占位符：</p>
+<ul>
+<li>下划线_：代表单个任意字符</li>
+<li>百分号%：代表多个任意字符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-- 查询姓马的有哪些？ like</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &#39;马%&#39;;</span><br><span class="line"></span><br><span class="line">-- 查询姓名第二个字是化的人</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &quot;_化%&quot;;</span><br><span class="line"></span><br><span class="line">-- 查询姓名是3个字的人</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &#39;___&#39;;</span><br><span class="line"></span><br><span class="line">-- 查询姓名中包含德的人</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &#39;%德%&#39;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="MySQL约束"><a href="#MySQL约束" class="headerlink" title="MySQL约束"></a>MySQL约束</h2><h2 id="MySQL多表"><a href="#MySQL多表" class="headerlink" title="MySQL多表"></a>MySQL多表</h2><h2 id="MySQL事务"><a href="#MySQL事务" class="headerlink" title="MySQL事务"></a>MySQL事务</h2>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Kaijie 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Kaijie 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Kaijie
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kaijie.tech/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/" title="MySQL学习">http://kaijie.tech/2020/02/23/MySQL学习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+      
+      
+      <div>
+      
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+      </div>
+      
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL%E5%AD%A6%E4%B9%A0/" rel="tag"># MySQL学习</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/%E5%A4%9A%E8%A1%A8%E5%8F%8A%E4%BA%8B%E5%8A%A1/" rel="tag"># 多表及事务</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/21/jdk1.8%E3%80%81Maven3.6.3%E5%92%8Cidea2019.3%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" rel="prev" title="jdk1.8、Maven3.6.3和idea2019.3安装教程">
+      <i class="fa fa-chevron-left"></i> jdk1.8、Maven3.6.3和idea2019.3安装教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/24/MySQL5-5-40%E5%92%8C%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7SQLyog%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E5%8D%B8%E8%BD%BD/" rel="next" title="MySQL5.5.40和可视化工具SQLyog的安装及卸载">
+      MySQL5.5.40和可视化工具SQLyog的安装及卸载 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的基本概念"><span class="nav-number">1.</span> <span class="nav-text">数据库的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL基础"><span class="nav-number">2.</span> <span class="nav-text">MySQL基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DDL-操作数据库、表"><span class="nav-number">2.1.</span> <span class="nav-text">DDL:操作数据库、表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数据库"><span class="nav-number">2.1.1.</span> <span class="nav-text">操作数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#C-Create-创建"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">C(Create):创建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#D-Delete-删除"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">D(Delete):删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#U-Update-修改"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">U(Update):修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#R-Retrieve-查询"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">R(Retrieve):查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用数据库"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">使用数据库</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作表"><span class="nav-number">2.1.2.</span> <span class="nav-text">操作表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#C-Create-创建表"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">C(Create)创建表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#D-Delete-删除-1"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">D(Delete):删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#U-Update-修改-1"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">U(Update):修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#R-Retrieve-查询-1"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">R(Retrieve):查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DML：增删改表中的数据"><span class="nav-number">2.2.</span> <span class="nav-text">DML：增删改表中的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加数据"><span class="nav-number">2.2.1.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据"><span class="nav-number">2.2.2.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改数据"><span class="nav-number">2.2.3.</span> <span class="nav-text">修改数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DQL：查询表中的记录"><span class="nav-number">2.3.</span> <span class="nav-text">DQL：查询表中的记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础查询"><span class="nav-number">2.3.1.</span> <span class="nav-text">基础查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件查询"><span class="nav-number">2.3.2.</span> <span class="nav-text">条件查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#like"><span class="nav-number">2.3.3.</span> <span class="nav-text">like</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL约束"><span class="nav-number">3.</span> <span class="nav-text">MySQL约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL多表"><span class="nav-number">4.</span> <span class="nav-text">MySQL多表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL事务"><span class="nav-number">5.</span> <span class="nav-text">MySQL事务</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kaijie"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Kaijie</p>
+  <div class="site-description" itemprop="description">我的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Kaijie234" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Kaijie234" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/abcgkj" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;abcgkj" rel="noopener" target="_blank"><i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-Kaijie"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kaijie</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">13k</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  <script src="//code.tidio.co/elcqr6fmccxaskykzkijbidmst2hitdp.js"></script>
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://kaijie.tech/2020/02/23/MySQL%E5%AD%A6%E4%B9%A0/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'OyvjX30Pt7Ic5VkgR0zgQ0oa-gzGzoHsz',
+      appKey     : 'Vle8KiqgjyplKXRV0GA9mi9o',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>
