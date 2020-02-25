@@ -306,14 +306,202 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询年龄大于20岁</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &gt; 20;</span><br><span class="line"></span><br><span class="line">-- 查询年龄等于20岁,这里是一个等号</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &#x3D; 20;</span><br><span class="line"></span><br><span class="line">-- 查询年龄不等于20岁</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age !&#x3D; 20;</span><br><span class="line">SELECT * FROM student WHERE age &lt;&gt; 20;</span><br><span class="line"></span><br><span class="line">-- 查询年龄大于等于20 小于等于30</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &gt;&#x3D; 20 &amp;&amp;  age &lt;&#x3D;30;</span><br><span class="line">SELECT * FROM student WHERE age &gt;&#x3D; 20 AND  age &lt;&#x3D;30;（**推荐使用AND，不推荐使用&amp;&amp;**）</span><br><span class="line">SELECT * FROM student WHERE age BETWEEN 20 AND 30;</span><br><span class="line"></span><br><span class="line">-- 查询年龄22岁，18岁，25岁的信息</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE age &#x3D; 22 OR age &#x3D; 18 OR age &#x3D; 25</span><br><span class="line">SELECT * FROM student WHERE age IN (22,18,25);</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩为null</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE english &#x3D; NULL; -- 不对的。null值不能使用 &#x3D; （!&#x3D;） 判断</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE english IS NULL;</span><br><span class="line"></span><br><span class="line">-- 查询英语成绩不为null</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE english  IS NOT NULL;</span><br></pre></td></tr></table></figure>
 
-<h4 id="like"><a href="#like" class="headerlink" title="like"></a>like</h4><p>占位符：</p>
+<h4 id="like关键字"><a href="#like关键字" class="headerlink" title="like关键字"></a>like关键字</h4><p>占位符：</p>
 <ul>
 <li>下划线_：代表单个任意字符</li>
 <li>百分号%：代表多个任意字符</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询姓马的有哪些？ like</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &#39;马%&#39;;</span><br><span class="line"></span><br><span class="line">-- 查询姓名第二个字是化的人</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &quot;_化%&quot;;</span><br><span class="line"></span><br><span class="line">-- 查询姓名是3个字的人</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &#39;___&#39;;</span><br><span class="line"></span><br><span class="line">-- 查询姓名中包含德的人</span><br><span class="line"></span><br><span class="line">SELECT * FROM student WHERE NAME LIKE &#39;%德%&#39;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="MySQL约束"><a href="#MySQL约束" class="headerlink" title="MySQL约束"></a>MySQL约束</h2><h2 id="MySQL多表"><a href="#MySQL多表" class="headerlink" title="MySQL多表"></a>MySQL多表</h2><h2 id="MySQL事务"><a href="#MySQL事务" class="headerlink" title="MySQL事务"></a>MySQL事务</h2>]]></content>
+<ol>
+<li>排序查询</li>
+</ol>
+<p>语法：order by 子句<br>    order by 排序字段1 排序方式1 ，  排序字段2 排序方式2…    </p>
+<p>排序方式：</p>
+<ul>
+<li>ASC：升序，默认的。</li>
+<li>DESC：降序。</li>
+</ul>
+<p><code>注意：如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件</code>。</p>
+<ol start="2">
+<li>聚合函数：将一列数据作为一个整体，进行纵向的计算。</li>
+</ol>
+<p>语法：<br>    SELECT 聚合函数名字(列名) FROM 表名;</p>
+<p>主要聚合函数：</p>
+<ul>
+<li>count：计算个数<ul>
+<li>一般选择不包含非空的列：主键（推荐使用）</li>
+<li>IFNULL函数，用IFNULL(列名, 0)</li>
+<li>count(*)，代表一行中只要有一个不为空就算一条记录</li>
+</ul>
+</li>
+<li>max：计算最大值</li>
+<li>min：计算最小值</li>
+<li>sum：计算和 </li>
+<li>avg：计算平均值</li>
+</ul>
+<p>注意：聚合函数的计算，排除null值。<br>解决方案：<br>    - 一般选择不包含非空的列：主键（推荐使用）<br>    - IFNULL函数，用IFNULL(列名, 0)<br>    - count(*)，代表一行中只要有一个不为空就算一条记录    </p>
+<h4 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h4><p>语法：group by 分组字段；</p>
+<p>注意：</p>
+<ul>
+<li>分组之后查询的字段：分组字段、聚合函数</li>
+</ul>
+<p><strong>where 和 having 的区别？</strong></p>
+<ul>
+<li><p>where 在分组之前进行限定，如果不满足条件，则不参与分组。having在分组之后进行限定，如果不满足结果，则不会被查询出来</p>
+</li>
+<li><p>where 后不可以跟聚合函数，having可以进行聚合函数的判断。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 按照性别分组，分别查询男、女同学的平均分，人数</span><br><span class="line"></span><br><span class="line">SELECT sex, AVG(math), COUNT(id) FROM student GROUP BY sex;</span><br><span class="line"></span><br><span class="line">-- 按照性别分组，分别查询男、女同学的平均分，人数。要求：分数低于70分的人，不参与分组。 </span><br><span class="line"></span><br><span class="line">SELECT sex, AVG(math), COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex;</span><br><span class="line"></span><br><span class="line">-- 按照性别分组，分别查询男、女同学的平均分，人数。要求：分数低于70分的人，不参与分组,分组之后，人数要大于两个人。</span><br><span class="line"></span><br><span class="line">SELECT sex, AVG(math), COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex HAVING COUNT(id) &gt; 2;</span><br><span class="line"></span><br><span class="line">-- 使用as起别名操作，使语句更加明晰，其中AS可以省略</span><br><span class="line"></span><br><span class="line">SELECT sex , AVG(math),COUNT(id) AS 人数 FROM student WHERE math &gt; 70 GROUP BY sex HAVING 人数 &gt; 2;</span><br></pre></td></tr></table></figure>
+
+<h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><p>语法：limit 开始的索引,每页查询的条数;</p>
+<p><strong>公式：开始的索引 = （当前的页码 - 1） * 每页显示的条数</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 每页显示3条记录 </span><br><span class="line">SELECT * FROM student LIMIT 0,3; -- 第1页</span><br><span class="line">SELECT * FROM student LIMIT 3,3; -- 第2页			</span><br><span class="line">SELECT * FROM student LIMIT 6,3; -- 第3页</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：limit 是一个MySQL”方言”，即是mysql特有的分页方式。</strong></p>
+<h2 id="MySQL约束"><a href="#MySQL约束" class="headerlink" title="MySQL约束"></a>MySQL约束</h2><p>概念： 对表中的<strong>数据</strong>进行限定，保证数据的正确性、有效性和完整性。    </p>
+<p>分类：</p>
+<ul>
+<li>主键约束：primary key</li>
+<li>非空约束：not null</li>
+<li>唯一约束：unique</li>
+<li>外键约束：foreign key</li>
+</ul>
+<h3 id="非空约束"><a href="#非空约束" class="headerlink" title="非空约束"></a>非空约束</h3><p>含义：not null，某一列的值不能为null</p>
+<ul>
+<li>创建表时添加约束<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE stu(</span><br><span class="line">	id INT,</span><br><span class="line">	NAME VARCHAR(20) NOT NULL -- name位为空</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+<li>创建表完后，添加非空约束<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE stu MODIFY NAME VARCHAR(20) NOT NULL;</span><br></pre></td></tr></table></figure></li>
+<li>删除name的非空约束<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE stu MODIFY NAME VARCHAR(20);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="唯一约束"><a href="#唯一约束" class="headerlink" title="唯一约束"></a>唯一约束</h3><p>含义：unique，某一列的值不能重复</p>
+<p><strong>注意：唯一约束可以有NULL值，但是只能有一条记录为null</strong></p>
+<p>在创建表时，添加唯一约束</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE stu(</span><br><span class="line">    id INT,</span><br><span class="line">    phone_number VARCHAR(20) UNIQUE -- 手机号</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">删除唯一约束</span><br><span class="line"></span><br><span class="line">​&#96;&#96;&#96;mysql</span><br><span class="line">-- 错误</span><br><span class="line">ALTER TABLE stu MODIFY phone_number VARCHAR(20);</span><br><span class="line"></span><br><span class="line">-- 正确</span><br><span class="line">ALTER TABLE stu DROP INDEX phone_number;</span><br></pre></td></tr></table></figure>
+<p>在表创建完后，添加唯一约束</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE stu MODIFY phone_number VARCHAR(20) UNIQUE;</span><br></pre></td></tr></table></figure>
+
+<h3 id="主键约束"><a href="#主键约束" class="headerlink" title="主键约束"></a>主键约束</h3><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>primary key。含义：非空且唯一</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>一张表只能有一个字段为主键</li>
+<li>主键就是表中记录的<strong>唯一标识</strong></li>
+</ul>
+<p>在创建表时，添加主键约束</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table stu(</span><br><span class="line">    id int primary key,-- 给id添加主键约束</span><br><span class="line">    name varchar(20)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>删除主键</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 错误 </span><br><span class="line">alter table stu modify id int ;</span><br><span class="line"></span><br><span class="line">-- 正确</span><br><span class="line">ALTER TABLE stu DROP PRIMARY KEY;</span><br></pre></td></tr></table></figure>
+
+<p>创建完表后，添加主键</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE stu MODIFY id INT PRIMARY KEY;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自动增长"><a href="#自动增长" class="headerlink" title="自动增长"></a>自动增长</h4><p>概念：如果某一列是数值类型的，使用 auto_increment 可以来完成值得自动增长在创建表时，添加主键约束，并且完成主键自增长。</p>
+<p><strong>注意：主键增长只与上一条记录的主键值有关。一般和主键一起使用</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table stu(</span><br><span class="line">    id int primary key auto_increment, -- 给id添加主键约束</span><br><span class="line">    name varchar(20)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>删除自动增长</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE stu MODIFY id INT;</span><br></pre></td></tr></table></figure>
+
+<p>添加自动增长</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE stu MODIFY id INT AUTO_INCREMENT;</span><br></pre></td></tr></table></figure>
+
+<h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><p>foreign key：让<strong>表于表</strong>产生关系，从而保证数据的正确性。</p>
+<p>在创建表时，可以添加外键</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">    -- 添加一些字段</span><br><span class="line">    ....</span><br><span class="line">    </span><br><span class="line">    -- 外键列 constraint表示约束的意思</span><br><span class="line">    -- 一般主表列名称为主键名称</span><br><span class="line">    constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>删除外键</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE 表名 DROP FOREIGN KEY 外键名称;</span><br></pre></td></tr></table></figure>
+
+<p>创建表之后，添加外键</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称);</span><br></pre></td></tr></table></figure>
+
+<h4 id="级联操作"><a href="#级联操作" class="headerlink" title="级联操作"></a>级联操作</h4><p>添加级联操作：</p>
+<ul>
+<li>级联更新：ON UPDATE CASCADE。</li>
+<li>级联删除：ON DELETE CASCADE。</li>
+<li>级联更新和删除可以添加一个或两个。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) </span><br><span class="line">ON UPDATE CASCADE ON DELETE CASCADE;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：使用级联操作时，要格外注意。</strong></p>
+<h2 id="数据库的设计"><a href="#数据库的设计" class="headerlink" title="数据库的设计"></a>数据库的设计</h2><h3 id="多表之间的关系"><a href="#多表之间的关系" class="headerlink" title="多表之间的关系"></a>多表之间的关系</h3><h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><p>一对一(了解)：如，人和身份证。<br>分析：一个人只有一个身份证，一个身份证只能对应一个人。</p>
+<p>实现方式：一对一关系实现，可以在任意一方添加<strong>唯一外键(使用unique)</strong>指向另一方的主键。<strong>一般情况下合成一张表就可以了。</strong></p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-25_12-36-45.png" alt=""></p>
+<p><strong>一对多</strong>(多对一)：如，部门和员工。<br>分析：一个部门有多个员工，一个员工只能对应一个部门。</p>
+<p>实现方式：<strong>在多的一方建立外键</strong>，指向一的一方的主键。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-25_12-36-34.png" alt=""></p>
+<p><strong>多对多</strong>：如，学生和课程<br>分析：一个学生可以选择很多门课程，一个课程也可以被很多学生选择。</p>
+<p>实现方式：多对多关系实现需要借助第三张中间表。中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-25_12-36-23.png" alt=""></p>
+<h4 id="多表关系案例"><a href="#多表关系案例" class="headerlink" title="多表关系案例"></a>多表关系案例</h4><p>创建旅游线路分类表 tab_category。一个分类对应多个线路。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- cid 旅游线路分类主键，自动增长</span><br><span class="line">-- cname 旅游线路分类名称非空，唯一，字符串 100</span><br><span class="line"></span><br><span class="line">CREATE TABLE tab_category (</span><br><span class="line">    cid INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    cname VARCHAR(100) NOT NULL UNIQUE</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>创建旅游线路表 tab_route。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE tab_route(</span><br><span class="line">	&#x2F;*</span><br><span class="line">    rid 旅游线路主键，自动增长</span><br><span class="line">    rname 旅游线路名称非空，唯一，字符串 100</span><br><span class="line">    price 价格</span><br><span class="line">    rdate 上架时间，日期类型</span><br><span class="line">    cid 外键，所属分类</span><br><span class="line">	*&#x2F;</span><br><span class="line">	</span><br><span class="line">    rid INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    rname VARCHAR(100) NOT NULL UNIQUE,</span><br><span class="line">    price DOUBLE,</span><br><span class="line">    rdate DATE,</span><br><span class="line">    cid INT,</span><br><span class="line">    </span><br><span class="line">    -- 可以省略constraint和外键名称，系统会自动分配一个名称。</span><br><span class="line">    FOREIGN KEY (cid) REFERENCES tab_category(cid)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">创建用户表 tab_user。线路和用户的关系为多对多，因此需要一个中间表记录二者的主键，我们设置为收藏表。</span><br><span class="line"></span><br><span class="line">​&#96;&#96;&#96;mysql</span><br><span class="line">CREATE TABLE tab_user (</span><br><span class="line">    &#x2F;*</span><br><span class="line">    uid 用户主键，自增长</span><br><span class="line">    username 用户名长度 100，唯一，非空</span><br><span class="line">    password 密码长度 30，非空</span><br><span class="line">    name 真实姓名长度 100</span><br><span class="line">    birthday 生日</span><br><span class="line">    sex 性别，定长字符串 1</span><br><span class="line">    telephone 手机号，字符串 11</span><br><span class="line">    email 邮箱，字符串长度 100</span><br><span class="line">    *&#x2F;</span><br><span class="line">    </span><br><span class="line">    uid INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">    username VARCHAR(100) UNIQUE NOT NULL,</span><br><span class="line">    PASSWORD VARCHAR(30) NOT NULL,</span><br><span class="line">    NAME VARCHAR(100),</span><br><span class="line">    birthday DATE,</span><br><span class="line">    sex CHAR(1) DEFAULT &#39;男&#39;,</span><br><span class="line">    telephone VARCHAR(11),</span><br><span class="line">    email VARCHAR(100)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>创建收藏表 tab_favorite，即线路和用户的中间表。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE tab_favorite (</span><br><span class="line">	&#x2F;*</span><br><span class="line">    rid 旅游线路 id，外键</span><br><span class="line">    date 收藏时间</span><br><span class="line">    uid 用户 id，外键</span><br><span class="line">    rid 和 uid 不能重复，设置复合主键，同一个用户不能收藏同一个线路两次</span><br><span class="line">    *&#x2F;</span><br><span class="line">    </span><br><span class="line">    rid INT, -- 线路id</span><br><span class="line">    DATE DATETIME,</span><br><span class="line">    uid INT, -- 用户id</span><br><span class="line">    -- 创建复合主键</span><br><span class="line">    PRIMARY KEY(rid,uid), -- 联合主键，二者联合起来作为收藏表的主键</span><br><span class="line">    FOREIGN KEY (rid) REFERENCES tab_route(rid),</span><br><span class="line">    FOREIGN KEY(uid) REFERENCES tab_user(uid)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="数据库设计的范式"><a href="#数据库设计的范式" class="headerlink" title="数据库设计的范式"></a>数据库设计的范式</h3><p>概念：设计数据库时，需要遵循的一些规范。<strong>要遵循后边的范式要求，必须先遵循前边的所有范式要求</strong>，设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范，<strong>越高的范式数据库冗余越小</strong>。目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。<strong>一般开发中，只需要达到第三范式即可。</strong></p>
+<h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
+<li><p>函数依赖：A–&gt;B,如果通过A属性(属性组)的值，可以确定唯一B属性的值。则称B依赖于A。例如：学号–&gt;姓名。（学号，课程名称） –&gt; 分数。</p>
+</li>
+<li><p>完全函数依赖：A–&gt;B，A依赖于B。如果A是一个<strong>属性组</strong>，则B属性值得确定需要依赖于A属性组中<strong>所有</strong>的属性值。例如：（学号，课程名称） –&gt; 分数。</p>
+</li>
+<li><p>部分函数依赖：A–&gt;B，如果A是一个<strong>属性组</strong>，则B属性值得确定只需要依赖于A属性组中<strong>某一些值</strong>即可。例如：（学号，课程名称） – &gt; 姓名。</p>
+</li>
+<li><p>传递函数依赖：A–&gt;B, B – &gt;C . 如果通过A属性(属性组)的值，可以确定唯一B属性的值，在通过B属性（属性组）的值可以确定唯一C属性的值，则称C传递函数依赖于A。例如：学号–&gt;系名，系名–&gt;系主任</p>
+</li>
+<li><p>码：如果在一张表中，一个属性或属性组，被其他所有属性所完全依赖，则称这个属性(属性组)为该表的码。例如：该表中码为：（学号，课程名称）。</p>
+</li>
+<li><p>主属性：码属性组中的所有属性</p>
+</li>
+<li><p>非主属性：除过码属性组的属性</p>
+</li>
+</ul>
+<h4 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h4><p>第一范式（1NF）：每一列都是不可分割的原子数据项。<br>第二范式（2NF）：在1NF的基础上，非码属性必须完全依赖于码（在1NF基础上<strong>消除非主属性对主码的部分函数依赖</strong>）。<strong>可以通过表的拆分来实现</strong>。<br>第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上<strong>消除传递依赖</strong>）。<strong>可以通过表的拆分来实现</strong>。</p>
+<h2 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="数据库的备份和还原"></a>数据库的备份和还原</h2><p><code>本质上是对sql语句的备份和还原。</code></p>
+<h3 id="使用命令行"><a href="#使用命令行" class="headerlink" title="使用命令行"></a>使用命令行</h3><h4 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqldump -u用户名 -p密码 数据库名称 &gt; 保存的路径</span><br></pre></td></tr></table></figure>
+
+<h4 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h4><ol>
+<li>登录数据库</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -u用户名 -p密码</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建数据库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create database 数据库名称;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用数据库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use 数据库名称;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>执行文件。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 例如 source sql </span><br><span class="line">source sql文件路径</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用图形化工具SQLyog"><a href="#使用图形化工具SQLyog" class="headerlink" title="使用图形化工具SQLyog"></a>使用图形化工具SQLyog</h3><h4 id="备份-1"><a href="#备份-1" class="headerlink" title="备份"></a>备份</h4><ol>
+<li><p>选中数据库，右键 ”备份/导出”。</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-25_12-24-19.png" alt=""></p>
+</li>
+<li><p>指定导出路径，保存成.sql 文件即可。</p>
+</li>
+</ol>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-25_12-24-30.png" alt=""></p>
+<h4 id="还原-1"><a href="#还原-1" class="headerlink" title="还原"></a>还原</h4><p>数据库列表区域右键“执行 SQL 脚本”， 指定要执行的 SQL 文件，执行即可</p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-25_12-26-07.png" alt=""></p>
+<p><img src="/images/MySQL%E5%AD%A6%E4%B9%A0/Snipaste_2020-02-25_12-26-19.png" alt=""></p>
+<h2 id="MySQL多表"><a href="#MySQL多表" class="headerlink" title="MySQL多表"></a>MySQL多表</h2><h2 id="MySQL事务"><a href="#MySQL事务" class="headerlink" title="MySQL事务"></a>MySQL事务</h2>]]></content>
       <categories>
         <category>数据库学习 - MySQL学习</category>
       </categories>
