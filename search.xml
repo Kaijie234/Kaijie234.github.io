@@ -38,21 +38,15 @@
 <ul>
 <li><p>参数1：需要查找的值，这里填<strong>E2</strong></p>
 </li>
-<li><p>参数2：被查找的数据表，其中<strong>地域分布明细</strong>为表名，后面需要跟<strong>英文模式下的感叹号</strong>，其后跟该表数据的范围，列名A和B需要分别用两个<strong>$</strong>括起来，具体如下</p>
+<li><p>参数2：被查找的数据表，其中<strong>地域分布明细</strong>为表名，后面需要跟<strong>英文模式下的感叹号</strong>，其后跟该表数据的范围，列名A和B需要分别用两个<strong>$</strong>括起来</p>
+</li>
+<li><p>参数3：是填充的列序数，这里填<strong>2</strong></p>
+</li>
+<li><p>参数4：输入0为精确匹配（通常使用），输入1位精确匹配。具体如下:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">=VLOOKUP(E2, 地域分布明细!<span class="variable">$A</span><span class="variable">$2</span>:<span class="variable">$B</span><span class="variable">$34</span>, 2, 0)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">地域分布明细!<span class="variable">$A</span><span class="variable">$2</span>:<span class="variable">$B</span><span class="variable">$34</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数3：是填充的列序数，这里填<strong>2</strong></li>
-<li>参数4：输入0为精确匹配（通常使用），输入1位精确匹配</li>
-</ul>
 </li>
-</ol>
-<p>具体如下:</p>
-   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">=VLOOKUP(E2, 地域分布明细!<span class="variable">$A</span><span class="variable">$2</span>:<span class="variable">$B</span><span class="variable">$34</span>, 2, 0)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
 <li><p>将<strong>地域</strong>这列的其余补全，应该先单击输入公式的这个单元格，然后把鼠标移到单元格的右下角，这时会出现一个加号。然后只需要<strong>双击下加号</strong>按钮即可完成全部填充了</p>
 </li>
 <li><p><strong>创建透视表</strong>。点击插入菜单栏-数据透视表</p>
