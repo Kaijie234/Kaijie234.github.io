@@ -3,11 +3,7 @@
   <entry>
     <title>Excel学习之透视表的使用</title>
     <url>/2020/04/10/Excel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%80%8F%E8%A7%86%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>记录一下在京东数据分析实习生笔试部分的两道题，本文主要包含一下知识点：</p>
-<ul>
-<li>VLOOKUP函数</li>
-<li>透视表</li>
-</ul>
+    <content><![CDATA[<p>本文主要包含Excel中的VLOOKUP函数和透视表等知识点。</p>
 <h2 id="透视表"><a href="#透视表" class="headerlink" title="透视表"></a>透视表</h2><h3 id="什么是数据透视表"><a href="#什么是数据透视表" class="headerlink" title="什么是数据透视表"></a>什么是数据透视表</h3><p>数据透视表简单来说就是<strong>把明细表进行分类汇总</strong>的过程，你<strong>可以按照不同的组合方式进行数据计算</strong>。并可以按照<strong>不同的维度</strong>得到我想得到的数据，这些都是通过数据透视表功能实现的</p>
 <h3 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h3><ol>
 <li>有excel数据明细表，且需要对数据源进行分类汇总</li>
