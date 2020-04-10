@@ -22,7 +22,7 @@
 </li>
 <li><p>数字不能为文本格式</p>
 <p><img src="https://pic4.zhimg.com/80/v2-5e07a3ec6d680d47e2dc786e2de5d1c3_720w.jpg" alt="img"></p>
-<p>文本格式下透视表的效果如下，<strong>需要把单元格的格式转化为数字</strong>哦！</p>
+<p>文本格式下透视表的效果如下，<strong>需要把单元格的格式转化为数字</strong>！</p>
 <p><img src="https://pic4.zhimg.com/80/v2-2f895b19caba57e35ff6f7fca3e1912f_720w.jpg" alt="img"></p>
 <p>转换成常规数值的方法：选中单元格-数据菜单-进行分列：</p>
 <p><img src="https://pic1.zhimg.com/v2-d45c9bbb6cc8dcea9821b80248b512b8_b.webp" alt="img"></p>
@@ -47,15 +47,12 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">地域分布明细!<span class="variable">$A</span><span class="variable">$2</span>:<span class="variable">$B</span><span class="variable">$34</span></span><br></pre></td></tr></table></figure>
 
-
-</li>
-</ol>
 <ul>
 <li>参数3：是填充的列序数，这里填<strong>2</strong></li>
-</ul>
-<ul>
 <li>参数4：输入0为精确匹配（通常使用），输入1位精确匹配</li>
 </ul>
+</li>
+</ol>
 <p>具体如下:</p>
    <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">=VLOOKUP(E2, 地域分布明细!<span class="variable">$A</span><span class="variable">$2</span>:<span class="variable">$B</span><span class="variable">$34</span>, 2, 0)</span><br></pre></td></tr></table></figure>
 
@@ -84,10 +81,10 @@
 <p><img src="/images/Excel%E5%AD%A6%E4%B9%A0/Excel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%80%8F%E8%A7%86%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8/image-20200410183502486.png" alt="image-20200410183502486"></p>
 </li>
 </ul>
-<p>我还可以通过值显示方式进行其它分析：</p>
+<p>还可以通过值显示方式进行其它分析：</p>
 <p><img src="/images/Excel%E5%AD%A6%E4%B9%A0/Excel%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%80%8F%E8%A7%86%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8/image-20200410183544580.png" alt="image-20200410183544580"></p>
 <h3 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h3><p>附件1中，华东、华北销售最好的口味有哪些？列TOP5（备注：地域、口味缺失信息可从“地域分布明细”、“口味明细”表中获取）</p>
-<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>基本思路和问题1相同。</p>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>基本思路和问题1相同：</p>
 <ul>
 <li>先使用VLOOKUP函数在原表基础上添加<strong>口味</strong>一列</li>
 <li>创建新的透视表，将行标签设置为<strong>地域和口味</strong>，将值标签设置为<strong>求和项:销售金额</strong></li>
